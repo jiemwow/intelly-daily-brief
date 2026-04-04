@@ -1,0 +1,178 @@
+{
+  "issueDate": "2026-04-03",
+  "headline": "智能驾驶公开沟通变得更重要，行业竞争开始比运营透明度",
+  "trendLine": "昨天最明显的变化不是单一公司动作，而是多个板块同时把焦点从技术展示转到运营、透明度和预算效率。",
+  "leadStory": {
+    "title": "智能驾驶公开沟通变得更重要，行业竞争开始比运营透明度",
+    "summary": "随着辅助驾驶与 Robotaxi 进入更大规模的公众讨论阶段，公开沟通、事故透明度和运营数据表达正在成为品牌竞争的一部分。这会直接改变用户理解这类新闻的优先级。",
+    "meta": "头条 / 智能驾驶 / 全球 / 08:05",
+    "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1800&q=80",
+    "readTime": "预计 4 分钟读完",
+    "sourceName": "Reuters",
+    "url": "https://www.reuters.com/"
+  },
+  "highlights": [
+    {
+      "label": "今日判断",
+      "text": "智能驾驶和 AI 都在从“能不能做”转向“怎么长期稳定交付”。"
+    },
+    {
+      "label": "阅读状态",
+      "text": "建议先看智能驾驶和商业趋势，再决定是否回读 AI。"
+    },
+    {
+      "label": "下一步",
+      "text": "先理解运营与预算，再看技术演进，信息密度会更高。"
+    }
+  ],
+  "sections": [
+    {
+      "key": "ai",
+      "title": "AI",
+      "strap": "模型、平台、采购变化",
+      "tone": "平台竞争开始越来越像传统软件采购战。",
+      "visual": {
+        "accent": "#2457d6",
+        "surface": "bg-[linear-gradient(180deg,#f4f8ff_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#d6e3fb]"
+      },
+      "image": "https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80",
+      "stories": [
+        {
+          "title": "企业用户开始更看重合同与支持能力，而不只关注模型能力。",
+          "sourceName": "The Information",
+          "url": "https://www.theinformation.com/"
+        },
+        {
+          "title": "Copilot 类工具竞争正在从首发功能走向真实留存。",
+          "sourceName": "The Verge",
+          "url": "https://www.theverge.com/ai-artificial-intelligence"
+        },
+        {
+          "title": "推理成本下降让更多垂直应用开始重新计算 ROI。",
+          "sourceName": "SemiAnalysis",
+          "url": "https://www.semianalysis.com/"
+        }
+      ]
+    },
+    {
+      "key": "autonomous-driving",
+      "title": "智能驾驶",
+      "strap": "运营、监管、事故沟通",
+      "tone": "公开数据和运营纪律，开始比演示效果更重要。",
+      "visual": {
+        "accent": "#0f766e",
+        "surface": "bg-[linear-gradient(180deg,#f2fbf9_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#d5ece8]"
+      },
+      "image": "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=900&q=80",
+      "stories": [
+        {
+          "title": "行业开始用车队表现与区域运营能力判断路线优劣。",
+          "sourceName": "Reuters",
+          "url": "https://www.reuters.com/"
+        },
+        {
+          "title": "国内品牌的辅助驾驶传播方式开始出现明显分化。",
+          "sourceName": "晚点 Auto",
+          "url": "https://auto.latepost.com/"
+        },
+        {
+          "title": "监管回应速度会影响消费者对技术成熟度的判断。",
+          "sourceName": "36Kr 汽车",
+          "url": "https://36kr.com/information/auto"
+        }
+      ]
+    },
+    {
+      "key": "embodied-ai",
+      "title": "具身智能",
+      "strap": "样机到场景",
+      "tone": "用户更该看真实场景密度，而不是惊艳 demo。",
+      "visual": {
+        "accent": "#7c3aed",
+        "surface": "bg-[linear-gradient(180deg,#f7f3ff_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#e7def9]"
+      },
+      "stories": [
+        {
+          "title": "仓储与制造仍然是商业部署最现实的突破口。",
+          "sourceName": "The Robot Report",
+          "url": "https://www.therobotreport.com/"
+        },
+        {
+          "title": "硬件可靠性和维护体系开始决定项目推进速度。",
+          "sourceName": "IEEE Spectrum",
+          "url": "https://spectrum.ieee.org/robotics"
+        },
+        {
+          "title": "国内供应链速度仍然是具身智能公司的一大优势。",
+          "sourceName": "高工机器人",
+          "url": "https://www.gg-robot.com/"
+        }
+      ]
+    },
+    {
+      "key": "global",
+      "title": "全球要闻",
+      "strap": "资本与监管",
+      "tone": "外部变量更多在影响节奏，而不是直接改变主线。",
+      "visual": {
+        "accent": "#b45309",
+        "surface": "bg-[linear-gradient(180deg,#fff8f0_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#f1dfc4]"
+      },
+      "stories": [
+        {
+          "title": "全球风险偏好回暖继续支撑科技资产估值。",
+          "sourceName": "Financial Times",
+          "url": "https://www.ft.com/"
+        },
+        {
+          "title": "政策讨论开始细化到开放模型与计算资源层面。",
+          "sourceName": "The Economist",
+          "url": "https://www.economist.com/"
+        },
+        {
+          "title": "国际供应链和地区竞争继续影响企业投入节奏。",
+          "sourceName": "Bloomberg",
+          "url": "https://www.bloomberg.com/"
+        }
+      ]
+    },
+    {
+      "key": "business",
+      "title": "商业趋势",
+      "strap": "预算与组织",
+      "tone": "企业现在更看能否形成跨部门执行闭环。",
+      "visual": {
+        "accent": "#334155",
+        "surface": "bg-[linear-gradient(180deg,#f5f7fa_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#dce3ea]"
+      },
+      "stories": [
+        {
+          "title": "预算审批机制重新定义 AI 项目的推进速度。",
+          "sourceName": "Harvard Business Review",
+          "url": "https://hbr.org/"
+        },
+        {
+          "title": "产品与销售协同正重新成为增长的关键变量。",
+          "sourceName": "Stratechery",
+          "url": "https://stratechery.com/"
+        },
+        {
+          "title": "高增长叙事正在让位于更可衡量的运营指标。",
+          "sourceName": "a16z",
+          "url": "https://a16z.com/"
+        }
+      ]
+    }
+  ],
+  "checkinStatus": {
+    "currentStreak": 5,
+    "completedSections": 4,
+    "totalSections": 5,
+    "pendingItems": 11
+  }
+}

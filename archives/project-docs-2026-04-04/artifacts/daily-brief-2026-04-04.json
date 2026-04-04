@@ -1,0 +1,130 @@
+{
+  "date": "2026-04-04",
+  "recipient": "jiem.yangjie@huawei.com",
+  "headline": "每日简报 | 人工智能与智能驾驶",
+  "trendLine": "过去二十四小时，人工智能与智能驾驶板块继续围绕模型竞争、商业落地与量产进展展开。",
+  "leadStory": {
+    "title": "一批 AI 创业少年辍学融资，一级市场继续追逐新故事",
+    "summary": "WSJ 报道显示，部分年轻 AI 创业者在离开校园后迅速获得投资支持，折射出一级市场对新一代 AI 创业叙事的持续追捧。",
+    "whyItMatters": "资本愿意为更早期、更年轻的 AI 创业团队买单，往往意味着市场仍在押注模型之外的新入口和新应用形态。",
+    "source": "WSJ",
+    "publishedAt": "2026-04-04T00:00:00.000Z",
+    "url": "https://news.google.com/rss/articles/CBMi7AJBVV95cUxOb3dOWEw4R2Frc2dqbF9SMG1sRnhMZU9MYUN3eGF2VkdKbnhqME4yZ1VJdVBZT3pjN0pYX01BdVh2SmVxNGxNTXRRTXhLeFl4R2hobFhOd1N3aHpFNkt4UlVaUEFWOUpZUHEzLVlCeUZoNjZYcTB6d080TndtQjVkZzVxc3lqQ0dVOUVBdGhSbkZyd0NLV0RDNm5OZXp1ZXNIN0NTSU44Q3Z4bDdvZU5TcmZ2SGQ3ZFowdDY4RTczREpVZldJQUItT29MY0VnRm9nbGFaREtkSDRKaFlNTHE5ckIyWFk2Q2F3ZHQ0NVpsbnBLdXM1dEhJWDJudWxhc0xaUkNDXzdteWdvVlhSNnpIMWhPbE80LUVEclNTcFgwRUEzemRaOTA3QWoxYkVHeWN4U3NxUXQ2cGdTSEJ2U19mNlliRkZabmVhcm5BTXhzUWI0VTJNRnlsTkpvdWh5S0FsVkNjVVZvWUZBZk55?oc=5"
+  },
+  "topHighlights": [
+    {
+      "title": "Anthropic 估值热度升高，SpaceX 或分流一级市场关注",
+      "summary": "一级市场对 Anthropic 的关注仍在升温，但 SpaceX 潜在融资预期可能重新分配大型科技资产的资金关注度。",
+      "whyItMatters": "头部 AI 公司在一级市场的估值变化，往往会提前影响融资环境、竞争预期和资本对赛道的资源倾斜。",
+      "source": "TechCrunch",
+      "publishedAt": "2026-04-04T01:31:00.000Z",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNbkVzSU82aDhXVzZoRWtFTDdBSE9oSnM0TmJ1X1Z2S1FKamllYU9tWkZvdWdWd0ZBY0VFbW1hcjE0WW5RRWRoLTBTaFpUcFkzY3pKUm1PNU9BX0hRM1czTGw5U19qR3JQRV9ZVEZ0VExmODhpS0hwUWVMSm9xTm0zZjRQZnZkSERsb2tsYVJZX0NrZGU4SlJTRlVCeWZHcVo1bHVpczF0b3lONjNtSGNCdmh0RFVBUQ?oc=5"
+    },
+    {
+      "title": "报道称马斯克要求参与 SpaceX IPO 的投行采购 Grok 订阅",
+      "summary": "纽约时报称，马斯克正推动参与 SpaceX IPO 的银行购买 Grok 订阅，以扩大其 AI 产品的企业渗透。",
+      "whyItMatters": "如果属实，这意味着头部 AI 产品的商业化正在向更强绑定的渠道策略和生态协同演进。",
+      "source": "Reuters",
+      "publishedAt": "2026-04-03T19:43:31.000Z",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNZkdGRFZaZWhpcTI5emtZeGZLMnpWa040cnVDQml6eGxTWGhaV1otQnI5Q3lnRDlzVW5XV1R0YkhYSl8yX3BqX2NPWHllOGlIY1NsN3ROMDlTM1ZXRVJBdG96bDFtTXAtaUpmdVYwMXJZOFFONm5XUGlMbjgyNnl2MGlnWTRFWTFfRXdRbGU1ckRNeGFaa2lGRno2T29aaXNFZEhCVWt4VmV0STVJcGV1cW9lcFBiOG52?oc=5"
+    },
+    {
+      "title": "小鹏更名撕掉“车企”标签，中国钢铁侠欲靠物理AI重塑估值？",
+      "summary": "该消息聚焦“小鹏更名撕掉“车企”标签，中国钢铁侠欲靠物理AI重塑估值”，反映中国人工智能赛道在产品、资本或组织层面的最新变化。",
+      "whyItMatters": "这条新闻有助于判断人工智能能力演进、产品竞争与产业采用的最新方向。",
+      "source": "新浪财经",
+      "publishedAt": "2026-04-04T02:04:00.000Z",
+      "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE85a0JmcTJta1FRWkc2dVVPWVJ0SGp6d0lCSVl3MUR0Y3BVcVFIbUd3ZnUxRlM0dlBxN3k2OUttQlBMY0tXVWlqckpGWExCV3F6WG44S0tIaXJXLU9MNGhzOU5pQlJNU0J4cEpEQjB4WWNKbTlxaXc?oc=5"
+    }
+  ],
+  "sections": [
+    {
+      "key": "global-ai",
+      "title": "全球人工智能",
+      "items": [
+        {
+          "title": "一批 AI 创业少年辍学融资，一级市场继续追逐新故事",
+          "summary": "WSJ 报道显示，部分年轻 AI 创业者在离开校园后迅速获得投资支持，折射出一级市场对新一代 AI 创业叙事的持续追捧。",
+          "whyItMatters": "资本愿意为更早期、更年轻的 AI 创业团队买单，往往意味着市场仍在押注模型之外的新入口和新应用形态。",
+          "source": "WSJ",
+          "publishedAt": "2026-04-04T00:00:00.000Z",
+          "url": "https://news.google.com/rss/articles/CBMi7AJBVV95cUxOb3dOWEw4R2Frc2dqbF9SMG1sRnhMZU9MYUN3eGF2VkdKbnhqME4yZ1VJdVBZT3pjN0pYX01BdVh2SmVxNGxNTXRRTXhLeFl4R2hobFhOd1N3aHpFNkt4UlVaUEFWOUpZUHEzLVlCeUZoNjZYcTB6d080TndtQjVkZzVxc3lqQ0dVOUVBdGhSbkZyd0NLV0RDNm5OZXp1ZXNIN0NTSU44Q3Z4bDdvZU5TcmZ2SGQ3ZFowdDY4RTczREpVZldJQUItT29MY0VnRm9nbGFaREtkSDRKaFlNTHE5ckIyWFk2Q2F3ZHQ0NVpsbnBLdXM1dEhJWDJudWxhc0xaUkNDXzdteWdvVlhSNnpIMWhPbE80LUVEclNTcFgwRUEzemRaOTA3QWoxYkVHeWN4U3NxUXQ2cGdTSEJ2U19mNlliRkZabmVhcm5BTXhzUWI0VTJNRnlsTkpvdWh5S0FsVkNjVVZvWUZBZk55?oc=5"
+        },
+        {
+          "title": "Anthropic 估值热度升高，SpaceX 或分流一级市场关注",
+          "summary": "一级市场对 Anthropic 的关注仍在升温，但 SpaceX 潜在融资预期可能重新分配大型科技资产的资金关注度。",
+          "whyItMatters": "头部 AI 公司在一级市场的估值变化，往往会提前影响融资环境、竞争预期和资本对赛道的资源倾斜。",
+          "source": "TechCrunch",
+          "publishedAt": "2026-04-04T01:31:00.000Z",
+          "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNbkVzSU82aDhXVzZoRWtFTDdBSE9oSnM0TmJ1X1Z2S1FKamllYU9tWkZvdWdWd0ZBY0VFbW1hcjE0WW5RRWRoLTBTaFpUcFkzY3pKUm1PNU9BX0hRM1czTGw5U19qR3JQRV9ZVEZ0VExmODhpS0hwUWVMSm9xTm0zZjRQZnZkSERsb2tsYVJZX0NrZGU4SlJTRlVCeWZHcVo1bHVpczF0b3lONjNtSGNCdmh0RFVBUQ?oc=5"
+        },
+        {
+          "title": "报道称马斯克要求参与 SpaceX IPO 的投行采购 Grok 订阅",
+          "summary": "纽约时报称，马斯克正推动参与 SpaceX IPO 的银行购买 Grok 订阅，以扩大其 AI 产品的企业渗透。",
+          "whyItMatters": "如果属实，这意味着头部 AI 产品的商业化正在向更强绑定的渠道策略和生态协同演进。",
+          "source": "Reuters",
+          "publishedAt": "2026-04-03T19:43:31.000Z",
+          "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNZkdGRFZaZWhpcTI5emtZeGZLMnpWa040cnVDQml6eGxTWGhaV1otQnI5Q3lnRDlzVW5XV1R0YkhYSl8yX3BqX2NPWHllOGlIY1NsN3ROMDlTM1ZXRVJBdG96bDFtTXAtaUpmdVYwMXJZOFFONm5XUGlMbjgyNnl2MGlnWTRFWTFfRXdRbGU1ckRNeGFaa2lGRno2T29aaXNFZEhCVWt4VmV0STVJcGV1cW9lcFBiOG52?oc=5"
+        }
+      ]
+    },
+    {
+      "key": "china-ai",
+      "title": "中国人工智能",
+      "items": [
+        {
+          "title": "小鹏更名撕掉“车企”标签，中国钢铁侠欲靠物理AI重塑估值？",
+          "summary": "该消息聚焦“小鹏更名撕掉“车企”标签，中国钢铁侠欲靠物理AI重塑估值”，反映中国人工智能赛道在产品、资本或组织层面的最新变化。",
+          "whyItMatters": "这条新闻有助于判断人工智能能力演进、产品竞争与产业采用的最新方向。",
+          "source": "新浪财经",
+          "publishedAt": "2026-04-04T02:04:00.000Z",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE85a0JmcTJta1FRWkc2dVVPWVJ0SGp6d0lCSVl3MUR0Y3BVcVFIbUd3ZnUxRlM0dlBxN3k2OUttQlBMY0tXVWlqckpGWExCV3F6WG44S0tIaXJXLU9MNGhzOU5pQlJNU0J4cEpEQjB4WWNKbTlxaXc?oc=5"
+        },
+        {
+          "title": "大厂AI叙事走向殊途：京东务实、腾讯变狠、快手最危险",
+          "summary": "该消息聚焦“大厂AI叙事走向殊途：京东务实、腾讯变狠、快手最危险”，反映中国人工智能赛道在产品、资本或组织层面的最新变化。",
+          "whyItMatters": "这条新闻有助于判断人工智能能力演进、产品竞争与产业采用的最新方向。",
+          "source": "36Kr",
+          "publishedAt": "2026-04-03T11:27:45.000Z",
+          "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9kT0NzZnZjQlRqbWNfUnd4a3JLNzNCZEdkWEJXbE12UmdmWGo3NzB3WFBwMHl2Z3pnTmxNQ1ZzM3VCeWZiLXotN2hxdXFlUQ?oc=5"
+        },
+        {
+          "title": "全球AI大模型混战，中国为什么突然霸榜？",
+          "summary": "该消息聚焦“全球AI大模型混战，中国为什么突然霸榜”，反映中国人工智能赛道在产品、资本或组织层面的最新变化。",
+          "whyItMatters": "产品或模型更新往往会直接改变市场对能力上限、竞争格局和落地节奏的判断。",
+          "source": "新浪新闻_手机新浪网",
+          "publishedAt": "2026-04-03T12:52:00.000Z",
+          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9LN0xvdno4SUVhTlFneHRWbFZNRV9BZTViSVdSODAtRl81TndNUWUyNWNubzM2dVYtbTNhMlg4ZWlkcHNmZHFkNkk4RFZGT3BodjhRVUhGVnFSS0VfZmR5Wjk0VkpSSldmUmJNRE9wMEtWaHRqT0E?oc=5"
+        }
+      ]
+    },
+    {
+      "key": "global-autonomous-driving",
+      "title": "全球智能驾驶",
+      "items": [
+        {
+          "title": "特斯拉推送 2026.8.6 更新，欧洲 FSD v14 落地信号升温",
+          "summary": "特斯拉最新版本更新被视为欧洲 FSD v14 推进的前置信号，显示其区域化智能驾驶节奏仍在加快。",
+          "whyItMatters": "欧洲市场的 FSD 推进不仅关系到特斯拉海外扩张，也会影响外界对其智驾合规与复制能力的判断。",
+          "source": "Tesla Oracle",
+          "publishedAt": "2026-04-03T22:56:13.000Z",
+          "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNMjZqMk9RTVVfR0hxdUltYzNHQ2lZM2hoaGZnODFOTkUyU1c3WTZvZnNyU1hkRGIteTBEVHZVQTBXc3RDRnIySmQ0dTZBdGVRYjlMR3duRWg4bzRZTGJmZ25WVEFoYzJPYVB3bzV0UmFOd3hPN0gwSHhHUjYxeE5zNWdVX1BMRlhCTnVuNDVwRUZTdzN2R3lQVUJsZG1IcTVaSmRMUjc0VENWdjdOeG55bHgtVjhiSFBmNTJYUTFBTlF2SXVaaUhEag?oc=5"
+        }
+      ]
+    },
+    {
+      "key": "china-autonomous-driving",
+      "title": "中国智能驾驶",
+      "items": [
+        {
+          "title": "中国智能驾驶暂未检出足够可靠的头条",
+          "summary": "当前这一栏尚未抓到足够可靠的一手候选，系统已保留版位并等待下一轮补强。",
+          "whyItMatters": "对高质量晨报来说，宁可少发，也不应该用低质量或不相关的新闻填满版面。",
+          "source": "系统提示",
+          "publishedAt": "2026-04-04T04:11:57.023Z",
+          "url": "https://example.com"
+        }
+      ]
+    }
+  ]
+}

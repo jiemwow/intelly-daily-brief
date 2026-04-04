@@ -1,0 +1,177 @@
+{
+  "issueDate": "2026-04-02",
+  "headline": "具身智能从热度竞争走向算账阶段，场景质量开始决定估值叙事",
+  "trendLine": "这一天最值得关注的是，具身智能和 AI 应用都在被拉回到单位经济与真实交付节奏上。",
+  "leadStory": {
+    "title": "具身智能从热度竞争走向算账阶段，场景质量开始决定估值叙事",
+    "summary": "资本与市场都在重新审视具身智能项目的可交付性，真正有价值的不是更炫的演示，而是更稳定的场景密度、维护体系和回款逻辑。这也会影响用户今天浏览板块的优先级。",
+    "meta": "头条 / 具身智能 / 全球 / 08:00",
+    "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1800&q=80",
+    "readTime": "预计 3 分钟读完",
+    "sourceName": "The Robot Report",
+    "url": "https://www.therobotreport.com/"
+  },
+  "highlights": [
+    {
+      "label": "今日判断",
+      "text": "最有价值的变化不是技术发布，而是商业可行性判断开始更清楚。"
+    },
+    {
+      "label": "阅读状态",
+      "text": "建议先看具身智能和商业趋势，再用 AI 板块补充背景。"
+    },
+    {
+      "label": "下一步",
+      "text": "先判断场景与组织，再看单点技术消息，效率更高。"
+    }
+  ],
+  "sections": [
+    {
+      "key": "ai",
+      "title": "AI",
+      "strap": "平台、采购、实际落地",
+      "tone": "企业市场最看重的已经不只是模型表现。",
+      "visual": {
+        "accent": "#2457d6",
+        "surface": "bg-[linear-gradient(180deg,#f4f8ff_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#d6e3fb]"
+      },
+      "stories": [
+        {
+          "title": "平台方开始用更完整的支持能力争夺企业预算。",
+          "sourceName": "The Information",
+          "url": "https://www.theinformation.com/"
+        },
+        {
+          "title": "应用厂商更关注部署与续费，而不再只谈新功能。",
+          "sourceName": "TechCrunch",
+          "url": "https://techcrunch.com/"
+        },
+        {
+          "title": "推理成本优化继续改变产品路线的优先级。",
+          "sourceName": "SemiAnalysis",
+          "url": "https://www.semianalysis.com/"
+        }
+      ]
+    },
+    {
+      "key": "autonomous-driving",
+      "title": "智能驾驶",
+      "strap": "量产与沟通",
+      "tone": "行业叙事开始更关注安全沟通和规模化运营。",
+      "visual": {
+        "accent": "#0f766e",
+        "surface": "bg-[linear-gradient(180deg,#f2fbf9_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#d5ece8]"
+      },
+      "stories": [
+        {
+          "title": "品牌竞争开始从演示拉回到用户体验与稳定性。",
+          "sourceName": "晚点 Auto",
+          "url": "https://auto.latepost.com/"
+        },
+        {
+          "title": "辅助驾驶传播策略正在影响公众对成熟度的认知。",
+          "sourceName": "36Kr 汽车",
+          "url": "https://36kr.com/information/auto"
+        },
+        {
+          "title": "国际市场更重视透明度与事故反馈机制。",
+          "sourceName": "Reuters",
+          "url": "https://www.reuters.com/"
+        }
+      ]
+    },
+    {
+      "key": "embodied-ai",
+      "title": "具身智能",
+      "strap": "场景、成本、供应链",
+      "tone": "真正值得看的，是谁能把演示变成长期交付。",
+      "visual": {
+        "accent": "#7c3aed",
+        "surface": "bg-[linear-gradient(180deg,#f7f3ff_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#e7def9]"
+      },
+      "image": "https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=900&q=80",
+      "stories": [
+        {
+          "title": "项目质量开始由场景复用率和部署节奏决定。",
+          "sourceName": "The Robot Report",
+          "url": "https://www.therobotreport.com/"
+        },
+        {
+          "title": "供应链和维护体系正在成为下一轮竞争重点。",
+          "sourceName": "IEEE Spectrum",
+          "url": "https://spectrum.ieee.org/robotics"
+        },
+        {
+          "title": "国内制造与物流场景仍然是最有现实性的切入口。",
+          "sourceName": "高工机器人",
+          "url": "https://www.gg-robot.com/"
+        }
+      ]
+    },
+    {
+      "key": "global",
+      "title": "全球要闻",
+      "strap": "宏观与地缘",
+      "tone": "更像背景噪音管理，而不是主要叙事。",
+      "visual": {
+        "accent": "#b45309",
+        "surface": "bg-[linear-gradient(180deg,#fff8f0_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#f1dfc4]"
+      },
+      "stories": [
+        {
+          "title": "宏观环境继续给科技支出提供温和支撑。",
+          "sourceName": "Financial Times",
+          "url": "https://www.ft.com/"
+        },
+        {
+          "title": "监管讨论仍在影响开放与闭源策略判断。",
+          "sourceName": "The Economist",
+          "url": "https://www.economist.com/"
+        },
+        {
+          "title": "供应链位置与区域关系仍然左右资本投入方向。",
+          "sourceName": "Bloomberg",
+          "url": "https://www.bloomberg.com/"
+        }
+      ]
+    },
+    {
+      "key": "business",
+      "title": "商业趋势",
+      "strap": "组织效率与预算",
+      "tone": "从增长叙事转向交付纪律，是最值得注意的变化。",
+      "visual": {
+        "accent": "#334155",
+        "surface": "bg-[linear-gradient(180deg,#f5f7fa_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#dce3ea]"
+      },
+      "stories": [
+        {
+          "title": "预算模型开始更严格地区分实验投入与规模化投入。",
+          "sourceName": "Harvard Business Review",
+          "url": "https://hbr.org/"
+        },
+        {
+          "title": "公司更重视产品、销售、交付三者之间的协同。",
+          "sourceName": "Stratechery",
+          "url": "https://stratechery.com/"
+        },
+        {
+          "title": "投资人开始更直接要求可衡量的商业结果。",
+          "sourceName": "a16z",
+          "url": "https://a16z.com/"
+        }
+      ]
+    }
+  ],
+  "checkinStatus": {
+    "currentStreak": 4,
+    "completedSections": 2,
+    "totalSections": 5,
+    "pendingItems": 15
+  }
+}

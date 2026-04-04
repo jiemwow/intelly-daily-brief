@@ -1,0 +1,1010 @@
+[
+  {
+    "sourceId": "ai-openai",
+    "name": "OpenAI News",
+    "domain": "openai.com",
+    "channelType": "manual",
+    "entryUrl": "https://openai.com/news/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "high",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "官方动态优先源"
+  },
+  {
+    "sourceId": "ai-anthropic",
+    "name": "Anthropic News",
+    "domain": "anthropic.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.anthropic.com/news",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "high",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "模型与产品更新"
+  },
+  {
+    "sourceId": "ai-google-blog",
+    "name": "Google AI Blog",
+    "domain": "blog.google",
+    "channelType": "rss",
+    "rssUrl": "https://blog.google/innovation-and-ai/technology/ai/rss/",
+    "entryUrl": "https://blog.google/innovation-and-ai/technology/ai/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "high",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "language": "en-US",
+    "notes": "Google AI 官方博客"
+  },
+  {
+    "sourceId": "ai-nvidia-blog",
+    "name": "NVIDIA Blog",
+    "domain": "blogs.nvidia.com",
+    "channelType": "rss",
+    "rssUrl": "https://blogs.nvidia.com/feed/",
+    "entryUrl": "https://blogs.nvidia.com/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "language": "en-US",
+    "notes": "平台、芯片与 AI 基础设施"
+  },
+  {
+    "sourceId": "ai-techcrunch",
+    "name": "TechCrunch AI",
+    "domain": "techcrunch.com",
+    "channelType": "rss",
+    "rssUrl": "https://techcrunch.com/category/artificial-intelligence/feed/",
+    "entryUrl": "https://techcrunch.com/category/artificial-intelligence/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "language": "en-US",
+    "notes": "日常稳定供给"
+  },
+  {
+    "sourceId": "ai-venturebeat",
+    "name": "VentureBeat AI",
+    "domain": "venturebeat.com",
+    "channelType": "rss",
+    "rssUrl": "https://venturebeat.com/category/ai/feed/",
+    "entryUrl": "https://venturebeat.com/category/ai/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "medium",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "language": "en-US",
+    "notes": "AI 行业动态与企业落地"
+  },
+  {
+    "sourceId": "ai-marktechpost",
+    "name": "MarkTechPost",
+    "domain": "marktechpost.com",
+    "channelType": "rss",
+    "rssUrl": "https://www.marktechpost.com/feed/",
+    "entryUrl": "https://www.marktechpost.com/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "language": "en-US",
+    "notes": "AI 垂直媒体，适合补充研究与产品更新"
+  },
+  {
+    "sourceId": "ai-huggingface-blog",
+    "name": "Hugging Face Blog",
+    "domain": "huggingface.co",
+    "channelType": "rss",
+    "rssUrl": "https://huggingface.co/blog/feed.xml",
+    "entryUrl": "https://huggingface.co/blog",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "language": "en-US",
+    "notes": "模型、开源与开发者生态更新"
+  },
+  {
+    "sourceId": "ai-openai-rss",
+    "name": "OpenAI News",
+    "domain": "openai.com",
+    "channelType": "rss",
+    "rssUrl": "https://openai.com/news/rss.xml",
+    "entryUrl": "https://openai.com/news/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "high",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "language": "en-US",
+    "notes": "官方更新，配图质量较高"
+  },
+  {
+    "sourceId": "ai-deepmind-blog",
+    "name": "Google DeepMind Blog",
+    "domain": "deepmind.google",
+    "channelType": "rss",
+    "rssUrl": "https://deepmind.google/blog/rss.xml",
+    "entryUrl": "https://deepmind.google/blog/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "high",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "language": "en-US",
+    "notes": "DeepMind 官方博客"
+  },
+  {
+    "sourceId": "ai-microsoft-ai-blog",
+    "name": "Microsoft AI Blog",
+    "domain": "blogs.microsoft.com",
+    "channelType": "rss",
+    "rssUrl": "https://blogs.microsoft.com/ai/feed/",
+    "entryUrl": "https://blogs.microsoft.com/ai/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "language": "en-US",
+    "notes": "近期待更频率偏低，先暂停避免干扰巡检"
+  },
+  {
+    "sourceId": "ai-aws-ml-blog",
+    "name": "AWS Machine Learning Blog",
+    "domain": "aws.amazon.com",
+    "channelType": "rss",
+    "rssUrl": "https://aws.amazon.com/blogs/machine-learning/feed/",
+    "entryUrl": "https://aws.amazon.com/blogs/machine-learning/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "language": "en-US",
+    "notes": "AWS AI / ML 官方博客"
+  },
+  {
+    "sourceId": "ai-google-research-blog",
+    "name": "Google Research Blog",
+    "domain": "research.google",
+    "channelType": "rss",
+    "rssUrl": "https://research.google/blog/rss/",
+    "entryUrl": "https://research.google/blog/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "language": "en-US",
+    "notes": "Google Research 研究与产品博客"
+  },
+  {
+    "sourceId": "ai-mittr-ai",
+    "name": "MIT Technology Review AI",
+    "domain": "technologyreview.com",
+    "channelType": "rss",
+    "rssUrl": "https://www.technologyreview.com/topic/artificial-intelligence/feed/",
+    "entryUrl": "https://www.technologyreview.com/topic/artificial-intelligence/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "language": "en-US",
+    "parserHints": [
+      "http1.1"
+    ],
+    "notes": "AI 专题流，适合补充深度报道"
+  },
+  {
+    "sourceId": "ai-theverge-ai",
+    "name": "The Verge AI",
+    "domain": "theverge.com",
+    "channelType": "rss",
+    "rssUrl": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+    "entryUrl": "https://www.theverge.com/ai-artificial-intelligence",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "medium",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "language": "en-US",
+    "notes": "AI 产品与平台动态补充"
+  },
+  {
+    "sourceId": "ai-36kr",
+    "name": "36Kr AI",
+    "domain": "36kr.com",
+    "channelType": "manual",
+    "entryUrl": "https://36kr.com/information/AI",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "high",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "notes": "国内 AI 重点源"
+  },
+  {
+    "sourceId": "ai-leiphone",
+    "name": "雷峰网 AI",
+    "domain": "leiphone.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.leiphone.com/category/ai",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "high",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "notes": "国内 AI 与智能驾驶垂直媒体"
+  },
+  {
+    "sourceId": "ai-geekpark",
+    "name": "极客公园 AI",
+    "domain": "geekpark.net",
+    "channelType": "manual",
+    "entryUrl": "https://www.geekpark.net/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "中文科技媒体，可补充 AI 公司与产品动态"
+  },
+  {
+    "sourceId": "ai-jiqizhixin",
+    "name": "机器之心",
+    "domain": "jiqizhixin.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.jiqizhixin.com/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "中文 AI 垂直媒体，适合补充模型与研究产业化"
+  },
+  {
+    "sourceId": "ai-zhidx",
+    "name": "智东西 AI",
+    "domain": "zhidx.com",
+    "channelType": "manual",
+    "entryUrl": "https://zhidx.com/",
+    "topics": [
+      "ai"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "中文 AI 产业观察补充源"
+  },
+  {
+    "sourceId": "ad-techcrunch",
+    "name": "TechCrunch Transportation",
+    "domain": "techcrunch.com",
+    "channelType": "rss",
+    "rssUrl": "https://techcrunch.com/category/transportation/feed/",
+    "entryUrl": "https://techcrunch.com/category/transportation/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "language": "en-US",
+    "notes": "智能驾驶稳定媒体来源"
+  },
+  {
+    "sourceId": "ad-theverge",
+    "name": "The Verge Transportation",
+    "domain": "theverge.com",
+    "channelType": "rss",
+    "rssUrl": "https://www.theverge.com/rss/transportation/index.xml",
+    "entryUrl": "https://www.theverge.com/transportation",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "medium",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "language": "en-US",
+    "notes": "智能交通与自动驾驶动态补充"
+  },
+  {
+    "sourceId": "ad-wardsauto",
+    "name": "WardsAuto News",
+    "domain": "wardsauto.com",
+    "channelType": "rss",
+    "rssUrl": "https://www.wardsauto.com/feeds/news/",
+    "entryUrl": "https://www.wardsauto.com/news/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "language": "en-US",
+    "notes": "汽车产业垂直媒体，可补充 ADAS、监管与量产动态"
+  },
+  {
+    "sourceId": "ad-waymo",
+    "name": "Waymo Blog",
+    "domain": "waymo.com",
+    "channelType": "rss",
+    "rssUrl": "https://waymo.com/blog/rss.xml",
+    "entryUrl": "https://waymo.com/blog/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "high",
+    "fetchIntervalMinutes": 180,
+    "status": "active",
+    "language": "en-US",
+    "notes": "官方运营和发布"
+  },
+  {
+    "sourceId": "ad-electrek-robotaxi",
+    "name": "Electrek Robotaxi",
+    "domain": "electrek.co",
+    "channelType": "rss",
+    "rssUrl": "https://electrek.co/guides/robotaxi/feed/",
+    "entryUrl": "https://electrek.co/guides/robotaxi/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "language": "en-US",
+    "parserHints": [
+      "http1.1"
+    ],
+    "notes": "Robotaxi 垂直追踪"
+  },
+  {
+    "sourceId": "ad-autonomous-vehicle-international",
+    "name": "Autonomous Vehicle International",
+    "domain": "autonomousvehicleinternational.com",
+    "channelType": "rss",
+    "rssUrl": "https://www.autonomousvehicleinternational.com/feed/",
+    "entryUrl": "https://www.autonomousvehicleinternational.com/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "language": "en-US",
+    "notes": "自动驾驶产业垂直媒体"
+  },
+  {
+    "sourceId": "ad-reuters",
+    "name": "Reuters Autos / Tech",
+    "domain": "reuters.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.reuters.com/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "notes": "高可信来源"
+  },
+  {
+    "sourceId": "ad-36kr",
+    "name": "36Kr 汽车 / 智驾",
+    "domain": "36kr.com",
+    "channelType": "manual",
+    "entryUrl": "https://36kr.com/information/auto",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "high",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "notes": "国内智驾重点源"
+  },
+  {
+    "sourceId": "ad-leiphone",
+    "name": "雷峰网 智能驾驶",
+    "domain": "leiphone.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.leiphone.com/category/transportation",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "high",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "notes": "国内智驾深度媒体，重点补充华为、小鹏、理想和 Robotaxi"
+  },
+  {
+    "sourceId": "ad-gasgoo",
+    "name": "盖世汽车 智能驾驶",
+    "domain": "gasgoo.com",
+    "channelType": "manual",
+    "entryUrl": "https://auto.gasgoo.com/Hot/43/966",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "high",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "notes": "国内汽车产业垂直媒体，适合补充量产、供应链和智能驾驶"
+  },
+  {
+    "sourceId": "ad-yiou-auto",
+    "name": "亿欧汽车",
+    "domain": "iyiou.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.iyiou.com/automobile",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "补充中国汽车与智驾商业动态"
+  },
+  {
+    "sourceId": "ad-geekpark",
+    "name": "极客公园 智驾",
+    "domain": "geekpark.net",
+    "channelType": "manual",
+    "entryUrl": "https://www.geekpark.net/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "补充中文科技视角下的智驾公司动态"
+  },
+  {
+    "sourceId": "ad-zhidx",
+    "name": "智东西 智驾",
+    "domain": "zhidx.com",
+    "channelType": "manual",
+    "entryUrl": "https://zhidx.com/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "补充中文智驾产业观察和车企动态"
+  },
+  {
+    "sourceId": "ad-cailianshe",
+    "name": "财联社汽车 / 智驾",
+    "domain": "cls.cn",
+    "channelType": "manual",
+    "entryUrl": "https://www.cls.cn/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "notes": "补充国内车企、Robotaxi 和监管快讯"
+  },
+  {
+    "sourceId": "ad-yicai-auto",
+    "name": "第一财经汽车 / 智驾",
+    "domain": "yicai.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.yicai.com/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "补充国内整车厂、供应链与智驾政策动态"
+  },
+  {
+    "sourceId": "ad-latepost",
+    "name": "晚点 Auto",
+    "domain": "latepost.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.latepost.com/",
+    "topics": [
+      "autonomous-driving"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "补充国内智驾与车企的深度商业报道"
+  },
+  {
+    "sourceId": "embodied-figure",
+    "name": "Figure News",
+    "domain": "figure.ai",
+    "channelType": "manual",
+    "entryUrl": "https://www.figure.ai/news",
+    "topics": [
+      "embodied-intelligence"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "official",
+    "priority": "high",
+    "fetchIntervalMinutes": 180,
+    "status": "active",
+    "notes": "人形机器人重点源"
+  },
+  {
+    "sourceId": "embodied-ieee",
+    "name": "IEEE Spectrum Robotics",
+    "domain": "spectrum.ieee.org",
+    "channelType": "manual",
+    "entryUrl": "https://spectrum.ieee.org/robotics",
+    "topics": [
+      "embodied-intelligence"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "专业媒体"
+  },
+  {
+    "sourceId": "embodied-unitree",
+    "name": "Unitree",
+    "domain": "unitree.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.unitree.com/news/",
+    "topics": [
+      "embodied-intelligence"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "official",
+    "priority": "high",
+    "fetchIntervalMinutes": 180,
+    "status": "active",
+    "notes": "国内重点玩家"
+  },
+  {
+    "sourceId": "embodied-leiphone",
+    "name": "雷峰网 机器人 / 具身智能",
+    "domain": "leiphone.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.leiphone.com/",
+    "topics": [
+      "embodied-intelligence"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "补充国内具身智能与机器人公司动态"
+  },
+  {
+    "sourceId": "embodied-zhidx",
+    "name": "智东西 机器人",
+    "domain": "zhidx.com",
+    "channelType": "manual",
+    "entryUrl": "https://zhidx.com/",
+    "topics": [
+      "embodied-intelligence"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "补充中文机器人产业观察"
+  },
+  {
+    "sourceId": "world-reuters",
+    "name": "Reuters World",
+    "domain": "reuters.com",
+    "channelType": "rss",
+    "entryUrl": "https://www.reuters.com/world/",
+    "topics": [
+      "world"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "notes": "全球要闻基础源，待补可直接抓取的 RSS URL"
+  },
+  {
+    "sourceId": "world-ap",
+    "name": "AP News",
+    "domain": "apnews.com",
+    "channelType": "manual",
+    "entryUrl": "https://apnews.com/",
+    "topics": [
+      "world"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "notes": "全球要闻基础源"
+  },
+  {
+    "sourceId": "world-wsj",
+    "name": "WSJ World News",
+    "domain": "wsj.com",
+    "channelType": "rss",
+    "entryUrl": "https://www.wsj.com/news/world",
+    "topics": [
+      "world"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "rssUrl": "https://feeds.a.dj.com/rss/RSSWorldNews.xml",
+    "parserHints": [
+      "http1.1"
+    ],
+    "notes": "全球要闻补充源，可直接抓取 RSS"
+  },
+  {
+    "sourceId": "world-nyt",
+    "name": "NYT World",
+    "domain": "nytimes.com",
+    "channelType": "rss",
+    "entryUrl": "https://www.nytimes.com/section/world",
+    "topics": [
+      "world"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "rssUrl": "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",
+    "notes": "全球要闻稳定补充源，可直接抓取 RSS"
+  },
+  {
+    "sourceId": "biz-ft",
+    "name": "Financial Times Companies / Markets",
+    "domain": "ft.com",
+    "channelType": "crawler",
+    "entryUrl": "https://www.ft.com/companies",
+    "topics": [
+      "business"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 120,
+    "status": "backlog",
+    "notes": "深度商业趋势，高价值但不放入第一天主链"
+  },
+  {
+    "sourceId": "biz-reuters",
+    "name": "Reuters Business",
+    "domain": "reuters.com",
+    "channelType": "rss",
+    "entryUrl": "https://www.reuters.com/business/",
+    "topics": [
+      "business"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "notes": "稳定广覆盖，待补可直接抓取的 RSS URL"
+  },
+  {
+    "sourceId": "biz-wsj",
+    "name": "WSJ Business News",
+    "domain": "wsj.com",
+    "channelType": "rss",
+    "entryUrl": "https://www.wsj.com/business",
+    "topics": [
+      "business"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "rssUrl": "https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml",
+    "parserHints": [
+      "http1.1"
+    ],
+    "notes": "商业趋势补充源，可直接抓取 RSS"
+  },
+  {
+    "sourceId": "biz-nyt",
+    "name": "NYT Business",
+    "domain": "nytimes.com",
+    "channelType": "rss",
+    "entryUrl": "https://www.nytimes.com/section/business",
+    "topics": [
+      "business"
+    ],
+    "regions": [
+      "global"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "high",
+    "fetchIntervalMinutes": 60,
+    "status": "active",
+    "rssUrl": "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml",
+    "notes": "商业趋势稳定补充源，可直接抓取 RSS"
+  },
+  {
+    "sourceId": "biz-yicai",
+    "name": "第一财经商业栏目",
+    "domain": "yicai.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.yicai.com/",
+    "topics": [
+      "business"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "medium",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "notes": "国内商业趋势"
+  },
+  {
+    "sourceId": "biz-cailianshe",
+    "name": "财联社",
+    "domain": "cls.cn",
+    "channelType": "manual",
+    "entryUrl": "https://www.cls.cn/",
+    "topics": [
+      "business"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "medium",
+    "fetchIntervalMinutes": 90,
+    "status": "active",
+    "notes": "补充中国公司与资本市场动态"
+  },
+  {
+    "sourceId": "biz-jiemian",
+    "name": "界面新闻商业",
+    "domain": "jiemian.com",
+    "channelType": "manual",
+    "entryUrl": "https://www.jiemian.com/",
+    "topics": [
+      "business"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "mainstream",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "补充公司、消费与商业趋势"
+  },
+  {
+    "sourceId": "biz-36kr",
+    "name": "36Kr 商业",
+    "domain": "36kr.com",
+    "channelType": "manual",
+    "entryUrl": "https://36kr.com/information/web_news/",
+    "topics": [
+      "business"
+    ],
+    "regions": [
+      "china"
+    ],
+    "trustLevel": "vertical",
+    "priority": "medium",
+    "fetchIntervalMinutes": 120,
+    "status": "active",
+    "notes": "补充创业公司、融资与消费商业动态"
+  }
+]

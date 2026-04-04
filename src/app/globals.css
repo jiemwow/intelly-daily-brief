@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --background: #edf2f7;
+  --foreground: #0f172a;
+  --paper: #fbfdff;
+  --paper-line: rgba(15, 23, 42, 0.1);
+  --paper-soft: rgba(15, 23, 42, 0.05);
+  --accent: #2457d6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans:
+    "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  --font-serif:
+    "Source Han Serif SC", "Songti SC", "STSong", "Noto Serif CJK SC", "Georgia",
+    "Times New Roman", serif;
+  --font-mono: "SFMono-Regular", "Menlo", "Monaco", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", "Source Han Sans SC", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

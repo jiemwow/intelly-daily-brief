@@ -1,0 +1,178 @@
+{
+  "issueDate": "2026-04-04",
+  "headline": "企业级 AI 采购正在重排，软件预算开始重新站队",
+  "trendLine": "今天最值得先看的不是单条爆点，而是企业级 AI、智能驾驶和具身智能同时进入“交付与运营见真章”的阶段。",
+  "leadStory": {
+    "title": "企业级 AI 采购正在重排，软件预算开始重新站队",
+    "summary": "今天最值得先看的不是单条爆点，而是企业级 AI、智能驾驶和具身智能同时进入“交付与运营见真章”的阶段。这会直接改变用户今天应该先投入注意力的板块顺序。",
+    "meta": "头条 / AI / 全球 / 08:10",
+    "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80",
+    "readTime": "预计 3 分钟读完",
+    "sourceName": "The Information",
+    "url": "https://www.theinformation.com/"
+  },
+  "highlights": [
+    {
+      "label": "今日判断",
+      "text": "比“有没有大新闻”更重要的，是多个技术板块都从展示逻辑转向交付逻辑。"
+    },
+    {
+      "label": "阅读状态",
+      "text": "14 条内容待筛读，建议先完成 AI、智能驾驶，再决定是否深入全球要闻。"
+    },
+    {
+      "label": "下一步",
+      "text": "优先打开 AI、智能驾驶、具身智能三个板块，其余作为环境信息补充。"
+    }
+  ],
+  "sections": [
+    {
+      "key": "ai",
+      "title": "AI",
+      "strap": "模型、平台、应用落地",
+      "tone": "重点先看交付效率，而不是参数和榜单。",
+      "visual": {
+        "accent": "#2457d6",
+        "surface": "bg-[linear-gradient(180deg,#f4f8ff_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#d6e3fb]"
+      },
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+      "stories": [
+        {
+          "title": "头部平台开始用预算归属和采购链路，而不是模型指标争夺企业客户。",
+          "sourceName": "The Information",
+          "url": "https://www.theinformation.com/"
+        },
+        {
+          "title": "应用层竞争正在从“谁先接入模型”转向“谁能更快形成稳定工作流”。",
+          "sourceName": "TechCrunch",
+          "url": "https://techcrunch.com/"
+        },
+        {
+          "title": "价格、推理成本与渠道能力，重新决定 AI 产品的优先级。",
+          "sourceName": "SemiAnalysis",
+          "url": "https://www.semianalysis.com/"
+        }
+      ]
+    },
+    {
+      "key": "autonomous-driving",
+      "title": "智能驾驶",
+      "strap": "量产、运营、透明度",
+      "tone": "今天更值得比较的是真实运营能力，而不是演示视频。",
+      "visual": {
+        "accent": "#0f766e",
+        "surface": "bg-[linear-gradient(180deg,#f2fbf9_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#d5ece8]"
+      },
+      "stories": [
+        {
+          "title": "城市辅助驾驶开始进入体验差异被量化的阶段，路线分化会更清楚。",
+          "sourceName": "晚点 Auto",
+          "url": "https://auto.latepost.com/"
+        },
+        {
+          "title": "整车厂和 Robotaxi 不再适合用同一套评价框架看待。",
+          "sourceName": "36Kr 汽车",
+          "url": "https://36kr.com/information/auto"
+        },
+        {
+          "title": "透明度、事故沟通与运营效率，正在成为新的讨论中心。",
+          "sourceName": "Reuters",
+          "url": "https://www.reuters.com/"
+        }
+      ]
+    },
+    {
+      "key": "embodied-ai",
+      "title": "具身智能",
+      "strap": "机器人、场景、成本结构",
+      "tone": "从概念热度走向可计费场景，是今天最重要的行业变化。",
+      "visual": {
+        "accent": "#7c3aed",
+        "surface": "bg-[linear-gradient(180deg,#f7f3ff_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#e7def9]"
+      },
+      "stories": [
+        {
+          "title": "行业开始用场景密度与交付速度判断项目质量，而不再只看 demo。",
+          "sourceName": "The Robot Report",
+          "url": "https://www.therobotreport.com/"
+        },
+        {
+          "title": "供应链成熟度会直接影响下一轮方案能否从实验室走向商业部署。",
+          "sourceName": "IEEE Spectrum",
+          "url": "https://spectrum.ieee.org/robotics"
+        },
+        {
+          "title": "物流、巡检、制造仍然是最现实的落地方向。",
+          "sourceName": "高工机器人",
+          "url": "https://www.gg-robot.com/"
+        }
+      ]
+    },
+    {
+      "key": "global",
+      "title": "全球要闻",
+      "strap": "政策、资本、区域变量",
+      "tone": "这一栏是环境变量，不是首页的主叙事。",
+      "visual": {
+        "accent": "#b45309",
+        "surface": "bg-[linear-gradient(180deg,#fff8f0_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#f1dfc4]"
+      },
+      "image": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80",
+      "stories": [
+        {
+          "title": "全球科技资本开支预期仍在抬升，为 AI 相关资产定价提供支撑。",
+          "sourceName": "Financial Times",
+          "url": "https://www.ft.com/"
+        },
+        {
+          "title": "监管变化开始影响模型开放度、部署节奏和地区优先级。",
+          "sourceName": "The Economist",
+          "url": "https://www.economist.com/"
+        },
+        {
+          "title": "外部供应链和选址逻辑继续塑造公司的资源配置。",
+          "sourceName": "Bloomberg",
+          "url": "https://www.bloomberg.com/"
+        }
+      ]
+    },
+    {
+      "key": "business",
+      "title": "商业趋势",
+      "strap": "组织、预算、渠道",
+      "tone": "商业化速度正在重新定义科技公司的估值逻辑。",
+      "visual": {
+        "accent": "#334155",
+        "surface": "bg-[linear-gradient(180deg,#f5f7fa_0%,#fbfcfd_100%)]",
+        "ring": "ring-[#dce3ea]"
+      },
+      "stories": [
+        {
+          "title": "组织设计正在直接影响 AI 产品的商业化效率和交付稳定性。",
+          "sourceName": "Harvard Business Review",
+          "url": "https://hbr.org/"
+        },
+        {
+          "title": "渠道与客户成功团队的重要性重新上升，改变产品竞争方式。",
+          "sourceName": "Stratechery",
+          "url": "https://stratechery.com/"
+        },
+        {
+          "title": "个人工具与企业工具的产品路径正在快速分化。",
+          "sourceName": "a16z",
+          "url": "https://a16z.com/"
+        }
+      ]
+    }
+  ],
+  "checkinStatus": {
+    "currentStreak": 6,
+    "completedSections": 3,
+    "totalSections": 5,
+    "pendingItems": 14
+  }
+}
