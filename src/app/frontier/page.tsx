@@ -19,7 +19,7 @@ import {
 } from "@/lib/brief-format";
 import { getIntellyTodayIssue } from "@/lib/intelly-issues";
 import { readLatestBrief } from "@/lib/latest-brief";
-import { INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
+import { INTELLY_SESSION_COOKIE, readSessionEmail } from "@/lib/intelly-user";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +28,7 @@ function uniqueSourceCount(labels: string[]) {
 }
 
 export default async function FrontierHomePage() {
-  const sessionEmail = (await cookies()).get(INTELLY_SESSION_COOKIE)?.value;
+  const sessionEmail = readSessionEmail((await cookies()).get(INTELLY_SESSION_COOKIE)?.value);
   const [brief, issue] = await Promise.all([readLatestBrief(), getIntellyTodayIssue(sessionEmail)]);
 
   if (!brief) {
@@ -152,4 +152,3 @@ export default async function FrontierHomePage() {
     </FrontierShell>
   );
 }
-

@@ -1,3 +1,4 @@
+import { createHmac, timingSafeEqual } from "node:crypto";
 import path from "node:path";
 import { promises as fs } from "node:fs";
 
@@ -11,6 +12,7 @@ type StoredUserState = {
 
 const storeFilePath = resolveMutableDataPath("intelly-user.json");
 export const INTELLY_SESSION_COOKIE = "intelly_session_email";
+const legacyEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const defaultSettings: IntellyUserSettings = {
   preferredSections: ["ai", "autonomous-driving", "embodied-intelligence", "world", "business"],
@@ -28,6 +30,63 @@ function defaultState(): StoredUserState {
 
 function buildDisplayName(email: string): string {
   return email.split("@")[0] || "Intelly Reader";
+}
+
+function getSessionSecret() {
+  return process.env.SESSION_COOKIE_SECRET?.trim() ?? process.env.ADMIN_SESSION_SECRET?.trim() ?? "";
+}
+
+function signSessionPayload(payload: string) {
+  const secret = getSessionSecret();
+  if (!secret) {
+    throw new Error("SESSION_COOKIE_SECRET is not configured");
+  }
+
+  return createHmac("sha256", secret).update(payload).digest("base64url");
+}
+
+export function createSessionToken(email: string) {
+  const payload = Buffer.from(JSON.stringify({ email })).toString("base64url");
+  return `${payload}.${signSessionPayload(payload)}`;
+}
+
+export function readSessionEmail(cookieValue?: string | null) {
+  if (!cookieValue) {
+    return null;
+  }
+
+  if (!cookieValue.includes(".")) {
+    if (process.env.NODE_ENV !== "production" && legacyEmailPattern.test(cookieValue)) {
+      return cookieValue.toLowerCase();
+    }
+
+    return null;
+  }
+
+  const [payload, providedSignature] = cookieValue.split(".");
+  if (!payload || !providedSignature) {
+    return null;
+  }
+
+  try {
+    const expectedSignature = signSessionPayload(payload);
+    const providedBuffer = Buffer.from(providedSignature);
+    const expectedBuffer = Buffer.from(expectedSignature);
+    if (
+      providedBuffer.length !== expectedBuffer.length ||
+      !timingSafeEqual(providedBuffer, expectedBuffer)
+    ) {
+      return null;
+    }
+
+    const decoded = JSON.parse(Buffer.from(payload, "base64url").toString("utf8")) as {
+      email?: string;
+    };
+
+    return decoded.email?.trim().toLowerCase() ?? null;
+  } catch {
+    return null;
+  }
 }
 
 async function readState(): Promise<StoredUserState> {

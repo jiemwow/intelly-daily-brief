@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 import { getAdminAccessState, INTELLY_ADMIN_COOKIE } from "@/lib/admin-auth";
 import { getIntellyTodayIssue } from "@/lib/intelly-issues";
-import { INTELLY_SESSION_COOKIE, signInLocalUser } from "@/lib/intelly-user";
+import { createSessionToken, INTELLY_SESSION_COOKIE, signInLocalUser } from "@/lib/intelly-user";
 import type { IntellyMeResponse } from "@/types/intelly";
 
 export async function POST(request: Request) {
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
   const state = await signInLocalUser(email);
   const cookieStore = await cookies();
-  cookieStore.set(INTELLY_SESSION_COOKIE, email, {
+  cookieStore.set(INTELLY_SESSION_COOKIE, createSessionToken(email), {
     httpOnly: true,
     sameSite: "lax",
     path: "/",

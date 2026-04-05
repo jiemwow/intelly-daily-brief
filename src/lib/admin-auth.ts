@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
 
-import { INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
+import { INTELLY_SESSION_COOKIE, readSessionEmail } from "@/lib/intelly-user";
 
 export const INTELLY_ADMIN_COOKIE = "intelly_admin_session";
 const adminSessionTtlMs = 1000 * 60 * 60 * 8;
@@ -117,7 +117,7 @@ export function getAdminAccessState(email?: string | null, token?: string | null
 
 export async function requireAdminPageAccess() {
   const cookieStore = await cookies();
-  const sessionEmail = cookieStore.get(INTELLY_SESSION_COOKIE)?.value;
+  const sessionEmail = readSessionEmail(cookieStore.get(INTELLY_SESSION_COOKIE)?.value);
   const adminToken = cookieStore.get(INTELLY_ADMIN_COOKIE)?.value;
 
   if (!hasValidAdminSession(sessionEmail, adminToken)) {
@@ -129,7 +129,7 @@ export async function requireAdminPageAccess() {
 
 export async function requireAdminApiAccess() {
   const cookieStore = await cookies();
-  const sessionEmail = cookieStore.get(INTELLY_SESSION_COOKIE)?.value;
+  const sessionEmail = readSessionEmail(cookieStore.get(INTELLY_SESSION_COOKIE)?.value);
   const adminToken = cookieStore.get(INTELLY_ADMIN_COOKIE)?.value;
 
   if (!hasValidAdminSession(sessionEmail, adminToken)) {

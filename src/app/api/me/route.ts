@@ -3,7 +3,12 @@ import { NextResponse } from "next/server";
 
 import { getAdminAccessState, INTELLY_ADMIN_COOKIE } from "@/lib/admin-auth";
 import { getIntellyTodayIssue } from "@/lib/intelly-issues";
-import { getStoredUser, INTELLY_SESSION_COOKIE, updateUserSettings } from "@/lib/intelly-user";
+import {
+  getStoredUser,
+  INTELLY_SESSION_COOKIE,
+  readSessionEmail,
+  updateUserSettings,
+} from "@/lib/intelly-user";
 import type { IntellyMeResponse, IntellyUserSettings } from "@/types/intelly";
 
 function unauthorized() {
@@ -12,7 +17,7 @@ function unauthorized() {
 
 export async function GET() {
   const cookieStore = await cookies();
-  const sessionEmail = cookieStore.get(INTELLY_SESSION_COOKIE)?.value;
+  const sessionEmail = readSessionEmail(cookieStore.get(INTELLY_SESSION_COOKIE)?.value);
   const adminToken = cookieStore.get(INTELLY_ADMIN_COOKIE)?.value;
   const { user, settings } = await getStoredUser(sessionEmail);
   const adminState = getAdminAccessState(sessionEmail, adminToken);
@@ -43,7 +48,7 @@ export async function GET() {
 
 export async function PATCH(request: Request) {
   const cookieStore = await cookies();
-  const sessionEmail = cookieStore.get(INTELLY_SESSION_COOKIE)?.value;
+  const sessionEmail = readSessionEmail(cookieStore.get(INTELLY_SESSION_COOKIE)?.value);
   const { user } = await getStoredUser(sessionEmail);
 
   if (!sessionEmail || !user || user.email !== sessionEmail) {

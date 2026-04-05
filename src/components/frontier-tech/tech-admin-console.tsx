@@ -16,6 +16,12 @@ type Props = {
   }>;
 };
 
+const pushChannels: Array<{ key: "email" | "wechat" | "im"; label: string }> = [
+  { key: "email", label: "发邮件" },
+  { key: "wechat", label: "发微信" },
+  { key: "im", label: "发 IM" },
+];
+
 export function TechAdminConsole({ issues, sources, deliveries }: Props) {
   const [sourceState, setSourceState] = useState(sources);
   const [messages, setMessages] = useState<Record<string, string>>({});
@@ -91,20 +97,27 @@ export function TechAdminConsole({ issues, sources, deliveries }: Props) {
                   >
                     重建
                   </button>
-                  <button
-                    type="button"
-                    onClick={() => handlePush(issue.issueDate, "wechat")}
-                    disabled={isPending}
-                    className="rounded-full border border-[#8bb7ff]/25 bg-[#8bb7ff]/10 px-3 py-1.5 text-[0.72rem] uppercase tracking-[0.12em] text-[#dce9ff]"
-                  >
-                    发微信
-                  </button>
+                  {pushChannels.map((channel) => (
+                    <button
+                      key={channel.key}
+                      type="button"
+                      onClick={() => handlePush(issue.issueDate, channel.key)}
+                      disabled={isPending}
+                      className="rounded-full border border-[#8bb7ff]/25 bg-[#8bb7ff]/10 px-3 py-1.5 text-[0.72rem] uppercase tracking-[0.12em] text-[#dce9ff]"
+                    >
+                      {channel.label}
+                    </button>
+                  ))}
                 </div>
               </div>
               {messages[issue.issueDate] ? <div className="mt-2 text-[0.82rem] text-[#95a3b8]">{messages[issue.issueDate]}</div> : null}
-              {messages[`${issue.issueDate}:wechat`] ? (
-                <div className="mt-2 text-[0.82rem] text-[#95a3b8]">{messages[`${issue.issueDate}:wechat`]}</div>
-              ) : null}
+              {pushChannels.map((channel) =>
+                messages[`${issue.issueDate}:${channel.key}`] ? (
+                  <div key={channel.key} className="mt-2 text-[0.82rem] text-[#95a3b8]">
+                    {channel.label}：{messages[`${issue.issueDate}:${channel.key}`]}
+                  </div>
+                ) : null,
+              )}
             </div>
           ))}
         </div>

@@ -4,14 +4,14 @@ import { getAdminAccessState, INTELLY_ADMIN_COOKIE } from "@/lib/admin-auth";
 import { TechAction, TechRail, TechShell } from "@/components/frontier-tech/tech-ui";
 import { TechMePanel } from "@/components/frontier-tech/tech-me-panel";
 import { getIntellyTodayIssue } from "@/lib/intelly-issues";
-import { getStoredUser, INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
+import { getStoredUser, INTELLY_SESSION_COOKIE, readSessionEmail } from "@/lib/intelly-user";
 import type { IntellyMeResponse } from "@/types/intelly";
 
 export const dynamic = "force-dynamic";
 
 export default async function FrontierTechMePage() {
   const cookieStore = await cookies();
-  const sessionEmail = cookieStore.get(INTELLY_SESSION_COOKIE)?.value;
+  const sessionEmail = readSessionEmail(cookieStore.get(INTELLY_SESSION_COOKIE)?.value);
   const adminToken = cookieStore.get(INTELLY_ADMIN_COOKIE)?.value;
   const [{ user, settings }, issue] = await Promise.all([
     getStoredUser(sessionEmail),

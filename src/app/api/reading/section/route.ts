@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 import { markSectionAsRead } from "@/lib/intelly-checkins";
-import { INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
+import { INTELLY_SESSION_COOKIE, readSessionEmail } from "@/lib/intelly-user";
 
 type ReadingPayload = {
   issueDate?: string;
@@ -10,7 +10,7 @@ type ReadingPayload = {
 };
 
 export async function POST(request: Request) {
-  const sessionEmail = (await cookies()).get(INTELLY_SESSION_COOKIE)?.value;
+  const sessionEmail = readSessionEmail((await cookies()).get(INTELLY_SESSION_COOKIE)?.value);
   const payload = (await request.json().catch(() => null)) as ReadingPayload | null;
 
   if (!payload?.issueDate || !payload?.sectionKey) {

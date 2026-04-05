@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 
 import { CheckinPanel } from "@/components/checkin-panel";
 import { getIntellyTodayIssue, listIntellyIssues } from "@/lib/intelly-issues";
-import { INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
+import { INTELLY_SESSION_COOKIE, readSessionEmail } from "@/lib/intelly-user";
 
 export const metadata: Metadata = {
   title: "Intelly | 新项目高保真",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function NewProjectHifiPage() {
-  const sessionEmail = (await cookies()).get(INTELLY_SESSION_COOKIE)?.value;
+  const sessionEmail = readSessionEmail((await cookies()).get(INTELLY_SESSION_COOKIE)?.value);
   const issue = await getIntellyTodayIssue(sessionEmail);
   const recentIssues = (await listIntellyIssues()).slice(0, 3);
   const headline = issue.leadStory;

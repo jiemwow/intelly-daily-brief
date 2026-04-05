@@ -3,12 +3,12 @@ import { cookies } from "next/headers";
 import { TechAction, TechRail, TechShell, TechStreamCard } from "@/components/frontier-tech/tech-ui";
 import { getIntellyCheckinHistory } from "@/lib/intelly-checkins";
 import { listIntellyIssues } from "@/lib/intelly-issues";
-import { INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
+import { INTELLY_SESSION_COOKIE, readSessionEmail } from "@/lib/intelly-user";
 
 export const dynamic = "force-dynamic";
 
 export default async function IssuesArchivePage() {
-  const sessionEmail = (await cookies()).get(INTELLY_SESSION_COOKIE)?.value;
+  const sessionEmail = readSessionEmail((await cookies()).get(INTELLY_SESSION_COOKIE)?.value);
   const [issues, history] = await Promise.all([listIntellyIssues(), getIntellyCheckinHistory(sessionEmail, 14)]);
 
   return (

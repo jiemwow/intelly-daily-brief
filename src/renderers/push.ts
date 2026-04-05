@@ -82,7 +82,9 @@ export function buildPushPreviewPayload(brief: DailyBrief): PushPreviewPayload {
   const title = `今日简报 · ${brief.date}`;
   const summary = brief.trendLine;
   const baseUrl =
-    process.env.APP_BASE_URL ?? process.env.APP_URL ?? "http://127.0.0.1:3002";
+    process.env.APP_BASE_URL ??
+    process.env.APP_URL ??
+    "https://intelly-daily-brief.vercel.app";
   const returnUrl = `${baseUrl.replace(/\/$/, "")}/issues/${brief.date}`;
 
   const sections = brief.sections.map((section) => ({

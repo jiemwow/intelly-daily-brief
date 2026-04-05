@@ -34,6 +34,10 @@ export async function GET(request: Request) {
   const requestedChannel = url.searchParams.get("channel")?.trim() as PushChannel | null;
   const dryRun = url.searchParams.get("dryRun") === "1";
 
+  if (!secret) {
+    return NextResponse.json({ error: "CRON_SECRET is not configured" }, { status: 503 });
+  }
+
   if (secret && authHeader !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -42,7 +46,9 @@ export async function GET(request: Request) {
   const now = new Date();
   const brief = await ensureBriefByDate(issueDate);
   const manualRun = Boolean(requestedIssueDate);
-  const channels = requestedChannel ? [requestedChannel] : (["email", "wechat"] satisfies PushChannel[]);
+  const channels = requestedChannel
+    ? [requestedChannel]
+    : (["email", "wechat", "im"] satisfies PushChannel[]);
   const deliveries = await Promise.all(
     channels.map(async (channel) => {
       const targetUsers = await resolveTargetsForRun({

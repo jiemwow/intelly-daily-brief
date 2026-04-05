@@ -5,7 +5,7 @@ import { TechCheckinPanel } from "@/components/frontier-tech/tech-checkin-panel"
 import { TechAction, TechHero, TechRail, TechShell, TechStreamCard } from "@/components/frontier-tech/tech-ui";
 import { getIntellyIssueByDate } from "@/lib/intelly-issues";
 import { buildStoryHref } from "@/lib/story-detail";
-import { INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
+import { INTELLY_SESSION_COOKIE, readSessionEmail } from "@/lib/intelly-user";
 
 type Props = {
   params: Promise<{ date: string }>;
@@ -15,7 +15,7 @@ export const dynamic = "force-dynamic";
 
 export default async function IssueDetailPage({ params }: Props) {
   const { date } = await params;
-  const sessionEmail = (await cookies()).get(INTELLY_SESSION_COOKIE)?.value;
+  const sessionEmail = readSessionEmail((await cookies()).get(INTELLY_SESSION_COOKIE)?.value);
   const issue = await getIntellyIssueByDate(date, sessionEmail);
 
   if (!issue) {
