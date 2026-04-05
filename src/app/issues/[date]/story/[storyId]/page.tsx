@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { TechAction, TechHero, TechRail, TechShell, TechStreamCard } from "@/components/frontier-tech/tech-ui";
 import { buildDisplayTitle, formatPublishedAt, formatSourceLabel } from "@/lib/brief-format";
-import { readBriefByDate } from "@/lib/latest-brief";
+import { ensureBriefByDate, readBriefByDate } from "@/lib/latest-brief";
 import { buildStoryHref, getStoryDetail } from "@/lib/story-detail";
 
 type Props = {
@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 
 export default async function StoryDetailPage({ params }: Props) {
   const { date, storyId } = await params;
-  const brief = await readBriefByDate(date);
+  const brief = (await readBriefByDate(date)) ?? (await ensureBriefByDate(date).catch(() => null));
 
   if (!brief) {
     notFound();
