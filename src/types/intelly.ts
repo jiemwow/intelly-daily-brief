@@ -108,6 +108,9 @@ export type IntellyMeResponse = {
   settings: IntellyUserSettings | null;
   currentStreak: number;
   todayCheckinStatus: IntellyCheckinStatus | null;
+  adminAccessConfigured: boolean;
+  adminEligible: boolean;
+  isAdmin: boolean;
 };
 
 export type IntellySourceChannelType = "rss" | "manual" | "crawler" | "pdf";

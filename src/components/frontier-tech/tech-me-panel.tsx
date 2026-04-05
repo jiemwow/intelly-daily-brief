@@ -30,6 +30,7 @@ function cloneSettings(settings: IntellyUserSettings | null): IntellyUserSetting
 export function TechMePanel({ initialState }: Props) {
   const [state, setState] = useState(initialState);
   const [email, setEmail] = useState(initialState.user?.email ?? "");
+  const [adminAccessCode, setAdminAccessCode] = useState("");
   const [settingsDraft, setSettingsDraft] = useState(() => cloneSettings(initialState.settings));
   const [message, setMessage] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -61,7 +62,7 @@ export function TechMePanel({ initialState }: Props) {
         return;
       }
 
-      setState((current) => ({ ...current, user: payload.user, settings: payload.settings }));
+      setState(payload);
       setSettingsDraft(cloneSettings(payload.settings));
       setMessage("已完成本地登录。");
     });
@@ -75,6 +76,9 @@ export function TechMePanel({ initialState }: Props) {
         settings: null,
         currentStreak: 0,
         todayCheckinStatus: null,
+        adminAccessConfigured: state.adminAccessConfigured,
+        adminEligible: false,
+        isAdmin: false,
       });
       setSettingsDraft(cloneSettings(null));
       setMessage("已退出登录。");
@@ -98,6 +102,35 @@ export function TechMePanel({ initialState }: Props) {
 
       setState((current) => ({ ...current, settings: payload.settings }));
       setMessage("偏好已保存。");
+    });
+  }
+
+  function handleEnableAdmin() {
+    startTransition(async () => {
+      setMessage(null);
+      const response = await fetch("/api/auth/admin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ accessCode: adminAccessCode }),
+      });
+      const payload = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        setMessage(payload?.error ?? "管理员验证失败。");
+        return;
+      }
+
+      setState((current) => ({ ...current, isAdmin: true }));
+      setAdminAccessCode("");
+      setMessage("管理员权限已开启。");
+    });
+  }
+
+  function handleDisableAdmin() {
+    startTransition(async () => {
+      await fetch("/api/auth/admin", { method: "DELETE" });
+      setState((current) => ({ ...current, isAdmin: false }));
+      setMessage("已退出管理员模式。");
     });
   }
 
@@ -145,6 +178,47 @@ export function TechMePanel({ initialState }: Props) {
         <h2 className="mt-3 text-[1.2rem] tracking-[-0.03em] text-white">阅读与推送</h2>
 
         <div className="mt-5 grid gap-5">
+          {state.user && state.adminEligible ? (
+            <div className="rounded-[18px] border border-white/10 bg-black/15 p-4">
+              <div className="text-[0.84rem] text-[#95a3b8]">管理员权限</div>
+              <div className="mt-2 text-[0.86rem] leading-7 text-[#dbe4f3]">
+                {state.isAdmin
+                  ? "当前已进入管理员模式，可访问运营台与管理接口。"
+                  : state.adminAccessConfigured
+                    ? "请输入管理员访问码以开启运营权限。"
+                    : "当前环境尚未配置管理员访问码。"}
+              </div>
+              {state.isAdmin ? (
+                <button
+                  type="button"
+                  onClick={handleDisableAdmin}
+                  disabled={isPending}
+                  className="mt-4 rounded-full border border-white/12 bg-white/5 px-4 py-2 text-[0.78rem] uppercase tracking-[0.12em] text-[#dce9ff] transition hover:border-[#8bb7ff] hover:bg-[#8bb7ff]/10"
+                >
+                  退出管理员模式
+                </button>
+              ) : state.adminAccessConfigured ? (
+                <div className="mt-4 flex flex-wrap items-center gap-3">
+                  <input
+                    type="password"
+                    value={adminAccessCode}
+                    onChange={(event) => setAdminAccessCode(event.target.value)}
+                    placeholder="输入管理员访问码"
+                    className="min-w-[220px] rounded-[14px] border border-white/10 bg-black/20 px-4 py-2.5 text-[0.9rem] text-white outline-none transition focus:border-[#8bb7ff]"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleEnableAdmin}
+                    disabled={isPending || adminAccessCode.trim().length === 0}
+                    className="rounded-full border border-[#8bb7ff]/30 bg-[#8bb7ff]/12 px-4 py-2 text-[0.78rem] uppercase tracking-[0.12em] text-[#dce9ff] transition hover:border-[#8bb7ff] hover:bg-[#8bb7ff]/18 disabled:cursor-not-allowed disabled:border-white/10 disabled:bg-white/6 disabled:text-[#677487]"
+                  >
+                    启用管理员权限
+                  </button>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+
           <div>
             <div className="text-[0.84rem] text-[#95a3b8]">感兴趣板块</div>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -220,4 +294,3 @@ export function TechMePanel({ initialState }: Props) {
     </div>
   );
 }
-

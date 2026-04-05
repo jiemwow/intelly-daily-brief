@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 
 import { TechMePanel } from "@/components/frontier-tech/tech-me-panel";
 import { TechAction, TechRail, TechShell } from "@/components/frontier-tech/tech-ui";
+import { getAdminAccessState, INTELLY_ADMIN_COOKIE } from "@/lib/admin-auth";
 import { getIntellyTodayIssue } from "@/lib/intelly-issues";
 import { getStoredUser, INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
 import type { IntellyMeResponse } from "@/types/intelly";
@@ -11,10 +12,12 @@ export const dynamic = "force-dynamic";
 export default async function MePage() {
   const cookieStore = await cookies();
   const sessionEmail = cookieStore.get(INTELLY_SESSION_COOKIE)?.value;
+  const adminToken = cookieStore.get(INTELLY_ADMIN_COOKIE)?.value;
   const [{ user, settings }, issue] = await Promise.all([
     getStoredUser(sessionEmail),
     getIntellyTodayIssue(sessionEmail),
   ]);
+  const adminState = getAdminAccessState(sessionEmail, adminToken);
 
   const initialState: IntellyMeResponse =
     sessionEmail && user?.email === sessionEmail
@@ -23,12 +26,14 @@ export default async function MePage() {
           settings,
           currentStreak: issue.checkinStatus.currentStreak,
           todayCheckinStatus: issue.checkinStatus,
+          ...adminState,
         }
       : {
           user: null,
           settings: null,
           currentStreak: 0,
           todayCheckinStatus: null,
+          ...adminState,
         };
 
   return (

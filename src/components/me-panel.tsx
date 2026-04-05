@@ -30,6 +30,7 @@ function cloneSettings(settings: IntellyUserSettings | null): IntellyUserSetting
 export function MePanel({ initialState }: MePanelProps) {
   const [state, setState] = useState(initialState);
   const [email, setEmail] = useState(initialState.user?.email ?? "");
+  const [adminAccessCode, setAdminAccessCode] = useState("");
   const [settingsDraft, setSettingsDraft] = useState(() => cloneSettings(initialState.settings));
   const [message, setMessage] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
@@ -61,11 +62,7 @@ export function MePanel({ initialState }: MePanelProps) {
         return;
       }
 
-      setState((current) => ({
-        ...current,
-        user: payload.user,
-        settings: payload.settings,
-      }));
+      setState(payload);
       setSettingsDraft(cloneSettings(payload.settings));
       setMessage("已完成本地登录。");
     });
@@ -79,6 +76,9 @@ export function MePanel({ initialState }: MePanelProps) {
         settings: null,
         currentStreak: 0,
         todayCheckinStatus: null,
+        adminAccessConfigured: state.adminAccessConfigured,
+        adminEligible: false,
+        isAdmin: false,
       });
       setSettingsDraft(cloneSettings(null));
       setMessage("已退出登录。");
@@ -105,6 +105,35 @@ export function MePanel({ initialState }: MePanelProps) {
         settings: payload.settings,
       }));
       setMessage("偏好已保存。");
+    });
+  }
+
+  function handleEnableAdmin() {
+    startTransition(async () => {
+      setMessage(null);
+      const response = await fetch("/api/auth/admin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ accessCode: adminAccessCode }),
+      });
+      const payload = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        setMessage(payload?.error ?? "管理员验证失败。");
+        return;
+      }
+
+      setState((current) => ({ ...current, isAdmin: true }));
+      setAdminAccessCode("");
+      setMessage("管理员权限已开启。");
+    });
+  }
+
+  function handleDisableAdmin() {
+    startTransition(async () => {
+      await fetch("/api/auth/admin", { method: "DELETE" });
+      setState((current) => ({ ...current, isAdmin: false }));
+      setMessage("已退出管理员模式。");
     });
   }
 
@@ -157,6 +186,47 @@ export function MePanel({ initialState }: MePanelProps) {
           阅读与推送偏好
         </h2>
         <div className="mt-5 grid gap-5">
+          {state.user && state.adminEligible ? (
+            <div className="rounded-[18px] border border-slate-200 bg-[#f8fbff] p-4">
+              <div className="text-[0.84rem] text-slate-600">管理员权限</div>
+              <div className="mt-2 text-[0.9rem] leading-7 text-slate-700">
+                {state.isAdmin
+                  ? "当前已进入管理员模式，可访问运营台与管理接口。"
+                  : state.adminAccessConfigured
+                    ? "请输入管理员访问码以开启运营权限。"
+                    : "当前环境尚未配置管理员访问码。"}
+              </div>
+              {state.isAdmin ? (
+                <button
+                  type="button"
+                  onClick={handleDisableAdmin}
+                  disabled={isPending}
+                  className="mt-4 rounded-full border border-slate-300 bg-white px-4 py-2 text-[0.84rem] font-medium text-slate-900 transition hover:border-[#2457d6] hover:text-[#2457d6]"
+                >
+                  退出管理员模式
+                </button>
+              ) : state.adminAccessConfigured ? (
+                <div className="mt-4 flex flex-wrap items-center gap-3">
+                  <input
+                    type="password"
+                    value={adminAccessCode}
+                    onChange={(event) => setAdminAccessCode(event.target.value)}
+                    placeholder="输入管理员访问码"
+                    className="min-w-[220px] rounded-[16px] border border-slate-200 bg-white px-4 py-3 text-[0.92rem] text-slate-900 outline-none transition focus:border-[#2457d6]"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleEnableAdmin}
+                    disabled={isPending || adminAccessCode.trim().length === 0}
+                    className="rounded-full bg-slate-950 px-4 py-2 text-[0.84rem] font-medium text-white transition hover:bg-[#173c9c] disabled:cursor-not-allowed disabled:bg-slate-300"
+                  >
+                    启用管理员权限
+                  </button>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
+
           <div>
             <div className="text-[0.84rem] text-slate-600">感兴趣板块</div>
             <div className="mt-3 flex flex-wrap gap-2">

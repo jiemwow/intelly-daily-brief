@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 
 import { FrontierAction, FrontierShell, FrontierSidebarPanel } from "@/components/frontier/frontier-ui";
 import { MePanel } from "@/components/me-panel";
+import { getAdminAccessState, INTELLY_ADMIN_COOKIE } from "@/lib/admin-auth";
 import { getIntellyTodayIssue } from "@/lib/intelly-issues";
 import { getStoredUser, INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
 import type { IntellyMeResponse } from "@/types/intelly";
@@ -11,10 +12,12 @@ export const dynamic = "force-dynamic";
 export default async function FrontierMePage() {
   const cookieStore = await cookies();
   const sessionEmail = cookieStore.get(INTELLY_SESSION_COOKIE)?.value;
+  const adminToken = cookieStore.get(INTELLY_ADMIN_COOKIE)?.value;
   const [{ user, settings }, issue] = await Promise.all([
     getStoredUser(sessionEmail),
     getIntellyTodayIssue(sessionEmail),
   ]);
+  const adminState = getAdminAccessState(sessionEmail, adminToken);
 
   const initialState: IntellyMeResponse =
     sessionEmail && user?.email === sessionEmail
@@ -23,12 +26,14 @@ export default async function FrontierMePage() {
           settings,
           currentStreak: issue.checkinStatus.currentStreak,
           todayCheckinStatus: issue.checkinStatus,
+          ...adminState,
         }
       : {
           user: null,
           settings: null,
           currentStreak: 0,
           todayCheckinStatus: null,
+          ...adminState,
         };
 
   return (
@@ -60,4 +65,3 @@ export default async function FrontierMePage() {
     </FrontierShell>
   );
 }
-
