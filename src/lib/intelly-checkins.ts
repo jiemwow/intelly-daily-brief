@@ -1,6 +1,7 @@
 import path from "node:path";
 import { promises as fs } from "node:fs";
 
+import { resolveMutableDataPath } from "@/lib/runtime-store";
 import type {
   IntellyCheckinHistoryEntry,
   IntellyCheckinHistoryResponse,
@@ -21,8 +22,8 @@ type StoredReadingState = {
   sectionsByUser: Record<string, Record<string, string[]>>;
 };
 
-const checkinFilePath = path.join(process.cwd(), "artifacts", "intelly-checkins.json");
-const readingFilePath = path.join(process.cwd(), "artifacts", "intelly-reading.json");
+const checkinFilePath = resolveMutableDataPath("intelly-checkins.json");
+const readingFilePath = resolveMutableDataPath("intelly-reading.json");
 
 function defaultCheckinState(): StoredCheckinState {
   return {

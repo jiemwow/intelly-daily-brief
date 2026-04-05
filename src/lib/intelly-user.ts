@@ -1,6 +1,7 @@
 import path from "node:path";
 import { promises as fs } from "node:fs";
 
+import { resolveMutableDataPath } from "@/lib/runtime-store";
 import type { IntellyPreferredSection, IntellyUserProfile, IntellyUserSettings } from "@/types/intelly";
 
 type StoredUserState = {
@@ -8,7 +9,7 @@ type StoredUserState = {
   settingsByEmail: Record<string, IntellyUserSettings>;
 };
 
-const storeFilePath = path.join(process.cwd(), "artifacts", "intelly-user.json");
+const storeFilePath = resolveMutableDataPath("intelly-user.json");
 export const INTELLY_SESSION_COOKIE = "intelly_session_email";
 
 const defaultSettings: IntellyUserSettings = {

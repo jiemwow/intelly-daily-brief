@@ -5,6 +5,7 @@ import { deliverBrief } from "@/delivery";
 import { readBriefByDate, readLatestBrief } from "@/lib/latest-brief";
 import { listStoredUsers } from "@/lib/intelly-user";
 import { appendPushOutboxEntry } from "@/lib/push-outbox";
+import { resolveMutableDataPath } from "@/lib/runtime-store";
 import { buildPushPreviewPayload } from "@/renderers/push";
 
 type PushChannel = "email" | "wechat" | "im";
@@ -19,7 +20,7 @@ type PushDeliveryRecord = {
   detail: Record<string, unknown>;
 };
 
-const deliveryLogPath = path.join(process.cwd(), "artifacts", "push-deliveries.json");
+const deliveryLogPath = resolveMutableDataPath("push-deliveries.json");
 
 async function readDeliveryLogs(): Promise<PushDeliveryRecord[]> {
   try {

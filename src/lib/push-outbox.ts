@@ -1,6 +1,8 @@
 import path from "node:path";
 import { promises as fs } from "node:fs";
 
+import { resolveMutableDataPath } from "@/lib/runtime-store";
+
 type PushOutboxEntry = {
   id: string;
   channel: "email" | "wechat" | "im";
@@ -9,7 +11,7 @@ type PushOutboxEntry = {
   payload: Record<string, unknown>;
 };
 
-const outboxPath = path.join(process.cwd(), "artifacts", "push-outbox.json");
+const outboxPath = resolveMutableDataPath("push-outbox.json");
 
 async function readOutbox(): Promise<PushOutboxEntry[]> {
   try {
