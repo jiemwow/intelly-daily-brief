@@ -11,7 +11,6 @@ import {
 import { buildDeck, buildDisplayTitle, formatPublishedAt, formatSourceLabel } from "@/lib/brief-format";
 import { getIntellyTodayIssue } from "@/lib/intelly-issues";
 import { readLatestBrief } from "@/lib/latest-brief";
-import { buildStoryHref } from "@/lib/story-detail";
 import { INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
 
 export const dynamic = "force-dynamic";
@@ -20,7 +19,7 @@ function uniqueCount(values: string[]) {
   return new Set(values).size;
 }
 
-export default async function Home() {
+export default async function FrontierTechPage() {
   const sessionEmail = (await cookies()).get(INTELLY_SESSION_COOKIE)?.value;
   const [brief, issue] = await Promise.all([readLatestBrief(), getIntellyTodayIssue(sessionEmail)]);
 
@@ -39,10 +38,10 @@ export default async function Home() {
       description={`今天的重点脉冲已经整理完成：${brief.trendLine}`}
       actions={
         <>
-          <TechAction href="/issues">历史归档</TechAction>
-          <TechAction href="/me">我的设置</TechAction>
-          <TechAction href="/push/preview">推送预览</TechAction>
-          <TechAction href="/frontier-tech">回退方案</TechAction>
+          <TechAction href="/">当前首页</TechAction>
+          <TechAction href="/frontier-tech/issues">历史归档</TechAction>
+          <TechAction href="/frontier-tech/me">我的设置</TechAction>
+          <TechAction href="/frontier-tech/push/preview">推送预览</TechAction>
         </>
       }
     >
@@ -59,7 +58,7 @@ export default async function Home() {
             title={buildDisplayTitle(brief.leadStory)}
             summary={buildDeck(brief.leadStory)}
             meta={`${formatSourceLabel(brief.leadStory.source)} · ${formatPublishedAt(brief.leadStory.publishedAt)}`}
-            href={buildStoryHref(brief.date, { kind: "lead" })}
+            href={brief.leadStory.canonicalUrl ?? brief.leadStory.url}
             image={brief.leadStory.imageUrl}
           />
 
@@ -69,21 +68,17 @@ export default async function Home() {
                 key={section.key}
                 eyebrow={`板块 ${String(index + 1).padStart(2, "0")}`}
                 title={section.title}
-                href={`/sections/${section.key}?date=${brief.date}`}
+                href={`/frontier-tech/sections/${section.key}?date=${brief.date}`}
               >
                 <div className="space-y-4">
                   {section.items.slice(0, 2).map((item, itemIndex) => (
                     <TechStreamCard
                       key={`${section.key}-${item.url}-${itemIndex}`}
-                      href={buildStoryHref(brief.date, {
-                        kind: "section",
-                        sectionKey: section.key,
-                        index: itemIndex,
-                      })}
+                      href={item.canonicalUrl ?? item.url}
                       title={buildDisplayTitle(item)}
                       meta={`${formatSourceLabel(item.source)} · ${formatPublishedAt(item.publishedAt)}`}
                       summary={buildDeck(item)}
-                      tag="站内详情"
+                      tag={item.canonicalUrl ? "原文" : "聚合"}
                       image={item.imageUrl}
                     />
                   ))}
@@ -99,7 +94,9 @@ export default async function Home() {
               {brief.topHighlights.map((item, index) => (
                 <a
                   key={`${item.url}-${index}`}
-                  href={buildStoryHref(brief.date, { kind: "highlight", index })}
+                  href={item.canonicalUrl ?? item.url}
+                  target="_blank"
+                  rel="noreferrer"
                   className="block rounded-[18px] border border-white/10 bg-white/[0.03] px-4 py-4 transition hover:border-[#8bb7ff]/40 hover:bg-[#8bb7ff]/[0.08]"
                 >
                   <div className="text-[0.68rem] uppercase tracking-[0.2em] text-[#8bb7ff]">
@@ -146,9 +143,9 @@ export default async function Home() {
                 </div>
               </div>
               <div className="grid gap-3">
-                <TechAction href={`/issues/${brief.date}`}>当期详情</TechAction>
-                <TechAction href="/push/preview">推送预览</TechAction>
-                <TechAction href="/admin">运营台</TechAction>
+                <TechAction href={`/frontier-tech/issues/${brief.date}`}>当期详情</TechAction>
+                <TechAction href="/frontier-tech/push/preview">推送预览</TechAction>
+                <TechAction href="/frontier-tech/admin">运营台</TechAction>
               </div>
             </div>
           </TechRail>

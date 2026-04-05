@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { requireAdminApiAccess } from "@/lib/admin-auth";
 import { getIntellySourceById, updateIntellySource } from "@/lib/intelly-sources";
 import type { IntellySourcePriority, IntellySourceStatus } from "@/types/intelly";
 
@@ -17,6 +18,11 @@ type SourceUpdatePayload = {
 };
 
 export async function GET(_request: Request, context: RouteContext) {
+  const access = await requireAdminApiAccess();
+  if (!access.ok) {
+    return access.response;
+  }
+
   const { id } = await context.params;
   const item = getIntellySourceById(id);
 
@@ -28,6 +34,11 @@ export async function GET(_request: Request, context: RouteContext) {
 }
 
 export async function PATCH(request: Request, context: RouteContext) {
+  const access = await requireAdminApiAccess();
+  if (!access.ok) {
+    return access.response;
+  }
+
   const { id } = await context.params;
   const payload = (await request.json().catch(() => null)) as SourceUpdatePayload | null;
 

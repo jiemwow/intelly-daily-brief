@@ -1,12 +1,11 @@
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 
-import { TechSectionReadTracker } from "@/components/frontier-tech/tech-section-read-tracker";
 import { TechAction, TechRail, TechShell, TechStreamCard } from "@/components/frontier-tech/tech-ui";
+import { TechSectionReadTracker } from "@/components/frontier-tech/tech-section-read-tracker";
 import { sectionConfigs } from "@/config/brief";
 import { buildDeck, buildDisplayTitle, formatPublishedAt, formatSourceLabel } from "@/lib/brief-format";
 import { readBriefByDate, readLatestBrief } from "@/lib/latest-brief";
-import { buildStoryHref } from "@/lib/story-detail";
 import { INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
 
 type Props = {
@@ -16,7 +15,7 @@ type Props = {
 
 export const dynamic = "force-dynamic";
 
-export default async function SectionDetailPage({ params, searchParams }: Props) {
+export default async function FrontierTechSectionPage({ params, searchParams }: Props) {
   const [{ section }, { date }] = await Promise.all([params, searchParams]);
   void (await cookies()).get(INTELLY_SESSION_COOKIE)?.value;
 
@@ -42,9 +41,8 @@ export default async function SectionDetailPage({ params, searchParams }: Props)
       description={`查看 ${brief.date} 这一天 ${sectionConfig.title} 的完整内容集合，适合从首页继续深读。`}
       actions={
         <>
-          <TechAction href={`/issues/${brief.date}`}>返回当期</TechAction>
-          <TechAction href="/issues">返回归档</TechAction>
-          <TechAction href={`/frontier-tech/sections/${sectionConfig.key}?date=${brief.date}`}>回退方案</TechAction>
+          <TechAction href={`/frontier-tech/issues/${brief.date}`}>返回当期</TechAction>
+          <TechAction href="/frontier-tech/issues">返回归档</TechAction>
         </>
       }
     >
@@ -54,15 +52,11 @@ export default async function SectionDetailPage({ params, searchParams }: Props)
           {sectionData.items.map((item, index) => (
             <TechStreamCard
               key={`${item.url}-${index}`}
-              href={buildStoryHref(brief.date, {
-                kind: "section",
-                sectionKey: sectionConfig.key,
-                index,
-              })}
+              href={item.canonicalUrl ?? item.url}
               title={buildDisplayTitle(item)}
               meta={`${formatSourceLabel(item.source)} · ${formatPublishedAt(item.publishedAt)}`}
               summary={`${buildDeck(item)} 为什么重要：${item.whyItMatters}`}
-              tag="站内详情"
+              tag={item.canonicalUrl ? "原文" : "聚合"}
               image={item.imageUrl}
             />
           ))}

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { requireAdminApiAccess } from "@/lib/admin-auth";
 import { readBriefByDate } from "@/lib/latest-brief";
 
 type RouteContext = {
@@ -9,6 +10,11 @@ type RouteContext = {
 };
 
 export async function GET(_request: Request, context: RouteContext) {
+  const access = await requireAdminApiAccess();
+  if (!access.ok) {
+    return access.response;
+  }
+
   const { id } = await context.params;
   const brief = await readBriefByDate(id);
 

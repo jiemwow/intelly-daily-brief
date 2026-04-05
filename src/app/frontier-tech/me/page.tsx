@@ -1,14 +1,14 @@
 import { cookies } from "next/headers";
 
-import { TechMePanel } from "@/components/frontier-tech/tech-me-panel";
 import { TechAction, TechRail, TechShell } from "@/components/frontier-tech/tech-ui";
+import { TechMePanel } from "@/components/frontier-tech/tech-me-panel";
 import { getIntellyTodayIssue } from "@/lib/intelly-issues";
 import { getStoredUser, INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
 import type { IntellyMeResponse } from "@/types/intelly";
 
 export const dynamic = "force-dynamic";
 
-export default async function MePage() {
+export default async function FrontierTechMePage() {
   const cookieStore = await cookies();
   const sessionEmail = cookieStore.get(INTELLY_SESSION_COOKIE)?.value;
   const [{ user, settings }, issue] = await Promise.all([
@@ -38,9 +38,8 @@ export default async function MePage() {
       description="集中管理登录状态、阅读偏好、微信与邮件推送，以及今天这期的打卡节奏。"
       actions={
         <>
-          <TechAction href="/">返回首页</TechAction>
-          <TechAction href="/issues">历史归档</TechAction>
-          <TechAction href="/frontier-tech/me">回退方案</TechAction>
+          <TechAction href="/frontier-tech">返回首页</TechAction>
+          <TechAction href="/frontier-tech/issues">历史归档</TechAction>
         </>
       }
     >

@@ -2,6 +2,7 @@ import path from "node:path";
 
 import { NextResponse } from "next/server";
 
+import { requireAdminApiAccess } from "@/lib/admin-auth";
 import { enrichBrief } from "@/lib/brief-enrichment";
 import { generateDailyBrief } from "@/lib/brief-pipeline";
 import { writeArtifact } from "@/lib/io";
@@ -14,6 +15,11 @@ type RouteContext = {
 };
 
 export async function POST(_request: Request, context: RouteContext) {
+  const access = await requireAdminApiAccess();
+  if (!access.ok) {
+    return access.response;
+  }
+
   const { id } = await context.params;
   const targetDate = new Date(`${id}T08:00:00+08:00`);
 

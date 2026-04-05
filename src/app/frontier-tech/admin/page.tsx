@@ -7,7 +7,7 @@ import { listIntellySources, summarizeIntellySources } from "@/lib/intelly-sourc
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminPage() {
+export default async function FrontierTechAdminPage() {
   await requireAdminPageAccess();
   const [issues, sources, deliveries] = await Promise.all([
     listIntellyIssues(),
@@ -23,9 +23,8 @@ export default async function AdminPage() {
       description="查看 issue、信源与推送记录的总览，判断今天这期的生产和投递状态。"
       actions={
         <>
-          <TechAction href="/">返回首页</TechAction>
-          <TechAction href="/issues">历史归档</TechAction>
-          <TechAction href="/frontier-tech/admin">回退方案</TechAction>
+          <TechAction href="/frontier-tech">返回首页</TechAction>
+          <TechAction href="/frontier-tech/issues">历史归档</TechAction>
         </>
       }
     >

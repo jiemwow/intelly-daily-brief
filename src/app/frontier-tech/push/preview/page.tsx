@@ -4,7 +4,7 @@ import { buildPushPreviewPayload } from "@/renderers/push";
 
 export const dynamic = "force-dynamic";
 
-export default async function PushPreviewPage() {
+export default async function FrontierTechPushPreviewPage() {
   const brief = await readLatestBrief();
   if (!brief) {
     return null;
@@ -19,9 +19,8 @@ export default async function PushPreviewPage() {
       description={payload.summary}
       actions={
         <>
-          <TechAction href="/">返回首页</TechAction>
-          <TechAction href="/issues">历史归档</TechAction>
-          <TechAction href="/frontier-tech/push/preview">回退方案</TechAction>
+          <TechAction href="/frontier-tech">返回首页</TechAction>
+          <TechAction href="/frontier-tech/issues">历史归档</TechAction>
         </>
       }
     >

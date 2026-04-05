@@ -7,9 +7,12 @@ import { INTELLY_SESSION_COOKIE } from "@/lib/intelly-user";
 
 export const dynamic = "force-dynamic";
 
-export default async function IssuesArchivePage() {
+export default async function FrontierTechIssuesPage() {
   const sessionEmail = (await cookies()).get(INTELLY_SESSION_COOKIE)?.value;
-  const [issues, history] = await Promise.all([listIntellyIssues(), getIntellyCheckinHistory(sessionEmail, 14)]);
+  const [issues, history] = await Promise.all([
+    listIntellyIssues(),
+    getIntellyCheckinHistory(sessionEmail, 14),
+  ]);
 
   return (
     <TechShell
@@ -18,9 +21,8 @@ export default async function IssuesArchivePage() {
       description="按日期回看每一期头条和板块变化，更适合追踪几天内的热点切换。"
       actions={
         <>
-          <TechAction href="/">返回首页</TechAction>
-          <TechAction href="/me">我的设置</TechAction>
-          <TechAction href="/frontier-tech/issues">回退方案</TechAction>
+          <TechAction href="/frontier-tech">返回首页</TechAction>
+          <TechAction href="/frontier-tech/me">我的设置</TechAction>
         </>
       }
     >
@@ -29,7 +31,7 @@ export default async function IssuesArchivePage() {
           {issues.map((issue) => (
             <TechStreamCard
               key={issue.issueDate}
-              href={`/issues/${issue.issueDate}`}
+              href={`/frontier-tech/issues/${issue.issueDate}`}
               title={issue.headline}
               meta={`${issue.issueDate} · ${issue.sectionCount} 个板块`}
               summary={`头条来源 ${issue.leadSourceName}，适合继续进入该期做深读。`}

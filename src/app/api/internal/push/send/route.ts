@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { requireAdminApiAccess } from "@/lib/admin-auth";
 import { sendPushDelivery } from "@/lib/push-delivery";
 
 type RequestPayload = {
@@ -9,6 +10,11 @@ type RequestPayload = {
 };
 
 export async function POST(request: Request) {
+  const access = await requireAdminApiAccess();
+  if (!access.ok) {
+    return access.response;
+  }
+
   const payload = (await request.json().catch(() => null)) as RequestPayload | null;
   const channel = payload?.channel;
 
