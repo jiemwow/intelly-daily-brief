@@ -1,63 +1,95 @@
 import { NextResponse } from "next/server";
-import path from "node:path";
 
-import { deliverBrief } from "@/delivery";
-import { enrichBrief } from "@/lib/brief-enrichment";
-import { generateDailyBrief } from "@/lib/brief-pipeline";
-import { writeArtifact } from "@/lib/io";
-import { readBriefByDate } from "@/lib/latest-brief";
-import { renderBriefEmail } from "@/renderers/email";
+import { ensureBriefByDate, getCurrentIssueDate } from "@/lib/latest-brief";
+import {
+  listEnabledPushTargets,
+  listScheduledPushTargets,
+  sendPushDelivery,
+} from "@/lib/push-delivery";
 
-function formatIssueDate(now = new Date()): string {
-  return new Intl.DateTimeFormat("en-CA", {
-    timeZone: process.env.BRIEF_TIMEZONE ?? "Asia/Shanghai",
-  }).format(now);
+type PushChannel = "email" | "wechat" | "im";
+
+async function resolveTargetsForRun(input: {
+  issueDate: string;
+  channel: PushChannel;
+  manualRun: boolean;
+  now: Date;
+}) {
+  if (input.manualRun) {
+    return await listEnabledPushTargets(input.channel);
+  }
+
+  return await listScheduledPushTargets({
+    issueDate: input.issueDate,
+    channel: input.channel,
+    now: input.now,
+  });
 }
 
 export async function GET(request: Request) {
   const secret = process.env.CRON_SECRET;
   const authHeader = request.headers.get("authorization");
-  const requestedIssueDate = new URL(request.url).searchParams.get("issueDate")?.trim();
+  const url = new URL(request.url);
+  const requestedIssueDate = url.searchParams.get("issueDate")?.trim();
+  const requestedChannel = url.searchParams.get("channel")?.trim() as PushChannel | null;
+  const dryRun = url.searchParams.get("dryRun") === "1";
 
   if (secret && authHeader !== `Bearer ${secret}`) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const issueDate = requestedIssueDate || formatIssueDate();
-  let brief = await readBriefByDate(issueDate);
+  const issueDate = requestedIssueDate || getCurrentIssueDate();
+  const now = new Date();
+  const brief = await ensureBriefByDate(issueDate);
+  const manualRun = Boolean(requestedIssueDate);
+  const channels = requestedChannel ? [requestedChannel] : (["email", "wechat"] satisfies PushChannel[]);
+  const deliveries = await Promise.all(
+    channels.map(async (channel) => {
+      const targetUsers = await resolveTargetsForRun({
+        issueDate,
+        channel,
+        manualRun,
+        now,
+      });
 
-  if (!brief) {
-    const previousMode = process.env.BRIEF_USE_CODEX_SUMMARY;
-    process.env.BRIEF_USE_CODEX_SUMMARY ??= "0";
-
-    try {
-      const draftBrief = await generateDailyBrief();
-      brief = await enrichBrief(draftBrief);
-
-      const artifactsDir = path.join(process.cwd(), "artifacts");
-      await writeArtifact(
-        artifactsDir,
-        `daily-brief-${brief.date}.json`,
-        JSON.stringify(brief, null, 2),
-      );
-      await writeArtifact(artifactsDir, `daily-brief-${brief.date}.html`, renderBriefEmail(brief));
-    } finally {
-      if (previousMode === undefined) {
-        delete process.env.BRIEF_USE_CODEX_SUMMARY;
-      } else {
-        process.env.BRIEF_USE_CODEX_SUMMARY = previousMode;
+      if (targetUsers.length === 0) {
+        return {
+          channel,
+          status: "skipped",
+          targets: [],
+          reason: manualRun ? "No enabled recipients found." : "No recipients due in this dispatch window.",
+        };
       }
-    }
-  }
 
-  const delivery = await deliverBrief(brief);
+      if (dryRun) {
+        return {
+          channel,
+          status: "scheduled",
+          targets: targetUsers,
+        };
+      }
+
+      const delivery = await sendPushDelivery({
+        issueDate,
+        channel,
+        targetUsers,
+      });
+
+      return {
+        channel,
+        status: delivery.status,
+        targets: targetUsers,
+        delivery,
+      };
+    }),
+  );
 
   return NextResponse.json({
     ok: true,
     issueDate,
-    mode: delivery.mode,
+    mode: dryRun ? "dry-run" : manualRun ? "manual" : "scheduled",
     generatedAt: new Date().toISOString(),
-    delivery,
+    deliveries,
     brief,
   });
 }

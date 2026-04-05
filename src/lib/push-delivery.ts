@@ -8,6 +8,7 @@ import { appendPushOutboxEntry } from "@/lib/push-outbox";
 import { buildPushPreviewPayload } from "@/renderers/push";
 
 type PushChannel = "email" | "wechat" | "im";
+type StoredTarget = Awaited<ReturnType<typeof listStoredUsers>>[number];
 
 type PushDeliveryRecord = {
   id: string;
@@ -65,10 +66,61 @@ export async function listPushDeliveries() {
   return await readDeliveryLogs();
 }
 
+function parseDailyPushTime(value: string): number | null {
+  const match = /^(\d{2}):(\d{2})$/.exec(value.trim());
+  if (!match) {
+    return null;
+  }
+
+  const hour = Number(match[1]);
+  const minute = Number(match[2]);
+  if (Number.isNaN(hour) || Number.isNaN(minute) || hour > 23 || minute > 59) {
+    return null;
+  }
+
+  return hour * 60 + minute;
+}
+
+function readLocalMinutes(now = new Date()): number {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: process.env.BRIEF_TIMEZONE ?? "Asia/Shanghai",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(now);
+
+  const hour = Number(parts.find((part) => part.type === "hour")?.value ?? "0");
+  const minute = Number(parts.find((part) => part.type === "minute")?.value ?? "0");
+  return hour * 60 + minute;
+}
+
+function isWithinDispatchWindow(
+  targetTime: string,
+  currentMinutes: number,
+  windowMinutes: number,
+): boolean {
+  const targetMinutes = parseDailyPushTime(targetTime);
+  if (targetMinutes == null) {
+    return false;
+  }
+
+  const delta = currentMinutes - targetMinutes;
+  return delta >= 0 && delta < windowMinutes;
+}
+
+function getWindowMinutes(): number {
+  const raw = Number(process.env.PUSH_SCHEDULE_WINDOW_MINUTES ?? "15");
+  if (!Number.isFinite(raw) || raw <= 0) {
+    return 15;
+  }
+
+  return Math.min(60, Math.max(5, Math.round(raw)));
+}
+
 async function resolveTargets(
   channel: PushChannel,
   targetUsers?: string[],
-) {
+): Promise<StoredTarget[]> {
   const users = await listStoredUsers();
   const requested = targetUsers?.map((email) => email.toLowerCase());
 
@@ -83,6 +135,49 @@ async function resolveTargets(
 
     return settings.pushWechatEnabled;
   });
+}
+
+function extractLoggedTargets(record: PushDeliveryRecord): string[] {
+  const targets = record.detail.targets;
+  if (!Array.isArray(targets)) {
+    return [];
+  }
+
+  return targets.filter((target): target is string => typeof target === "string");
+}
+
+async function readAlreadySentTargets(issueDate: string, channel: PushChannel): Promise<Set<string>> {
+  const logs = await readDeliveryLogs();
+  const sentTargets = logs
+    .filter((record) => record.issueDate === issueDate && record.channel === channel && record.status === "sent")
+    .flatMap(extractLoggedTargets)
+    .map((target) => target.toLowerCase());
+
+  return new Set(sentTargets);
+}
+
+export async function listEnabledPushTargets(channel: PushChannel): Promise<string[]> {
+  const targets = await resolveTargets(channel);
+  return targets.map(({ user }) => user.email);
+}
+
+export async function listScheduledPushTargets(input: {
+  issueDate: string;
+  channel: PushChannel;
+  now?: Date;
+}): Promise<string[]> {
+  const [targets, alreadySentTargets] = await Promise.all([
+    resolveTargets(input.channel),
+    readAlreadySentTargets(input.issueDate, input.channel),
+  ]);
+
+  const currentMinutes = readLocalMinutes(input.now);
+  const windowMinutes = getWindowMinutes();
+
+  return targets
+    .filter(({ settings }) => isWithinDispatchWindow(settings.dailyPushTime, currentMinutes, windowMinutes))
+    .map(({ user }) => user.email)
+    .filter((email) => !alreadySentTargets.has(email.toLowerCase()));
 }
 
 export async function sendPushDelivery(input: {

@@ -81,7 +81,9 @@ export function buildPushPreviewPayload(brief: DailyBrief): PushPreviewPayload {
   const leadStory = brief.leadStory;
   const title = `今日简报 · ${brief.date}`;
   const summary = brief.trendLine;
-  const returnUrl = `${process.env.APP_BASE_URL ?? "http://127.0.0.1:3002"}/issues/${brief.date}`;
+  const baseUrl =
+    process.env.APP_BASE_URL ?? process.env.APP_URL ?? "http://127.0.0.1:3002";
+  const returnUrl = `${baseUrl.replace(/\/$/, "")}/issues/${brief.date}`;
 
   const sections = brief.sections.map((section) => ({
     title: section.title,
