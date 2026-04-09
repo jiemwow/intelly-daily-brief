@@ -2,6 +2,7 @@ import path from "node:path";
 import { promises as fs } from "node:fs";
 
 import { deliverBrief } from "@/delivery";
+import { resolveBriefRecipient } from "@/config/brief";
 import { readBriefByDate, readLatestBrief } from "@/lib/latest-brief";
 import { listStoredUsers } from "@/lib/intelly-user";
 import { appendPushOutboxEntry } from "@/lib/push-outbox";
@@ -118,6 +119,11 @@ function getWindowMinutes(): number {
   return Math.min(60, Math.max(5, Math.round(raw)));
 }
 
+function getDefaultEmailTarget() {
+  const recipient = resolveBriefRecipient().trim().toLowerCase();
+  return recipient.length > 0 ? recipient : null;
+}
+
 async function resolveTargets(
   channel: PushChannel,
   targetUsers?: string[],
@@ -159,7 +165,14 @@ async function readAlreadySentTargets(issueDate: string, channel: PushChannel): 
 
 export async function listEnabledPushTargets(channel: PushChannel): Promise<string[]> {
   const targets = await resolveTargets(channel);
-  return targets.map(({ user }) => user.email);
+  const emails = targets.map(({ user }) => user.email);
+
+  if (channel !== "email" || emails.length > 0) {
+    return emails;
+  }
+
+  const fallback = getDefaultEmailTarget();
+  return fallback ? [fallback] : [];
 }
 
 export async function listScheduledPushTargets(input: {
@@ -178,7 +191,24 @@ export async function listScheduledPushTargets(input: {
   return targets
     .filter(({ settings }) => isWithinDispatchWindow(settings.dailyPushTime, currentMinutes, windowMinutes))
     .map(({ user }) => user.email)
-    .filter((email) => !alreadySentTargets.has(email.toLowerCase()));
+    .filter((email) => !alreadySentTargets.has(email.toLowerCase()))
+    .concat(
+      input.channel === "email"
+        ? (() => {
+            const fallback = getDefaultEmailTarget();
+            if (
+              !fallback ||
+              alreadySentTargets.has(fallback) ||
+              !isWithinDispatchWindow("07:50", currentMinutes, windowMinutes)
+            ) {
+              return [];
+            }
+
+            return [fallback];
+          })()
+        : [],
+    )
+    .filter((email, index, items) => items.indexOf(email) === index);
 }
 
 export async function sendPushDelivery(input: {
@@ -194,9 +224,15 @@ export async function sendPushDelivery(input: {
   const createdAt = new Date().toISOString();
   const targets = await resolveTargets(input.channel, input.targetUsers);
   const targetEmails = targets.map(({ user }) => user.email);
+  const emailTargets =
+    input.channel === "email" && targetEmails.length === 0
+      ? getDefaultEmailTarget()
+        ? [getDefaultEmailTarget() as string]
+        : []
+      : targetEmails;
 
   if (input.channel === "email") {
-    if (targetEmails.length === 0) {
+    if (emailTargets.length === 0) {
       const record: PushDeliveryRecord = {
         id: makeRecordId(brief.date, input.channel),
         issueDate: brief.date,
@@ -211,7 +247,7 @@ export async function sendPushDelivery(input: {
       return record;
     }
 
-    const results = await Promise.all(targetEmails.map((email) => deliverBrief(brief, email)));
+    const results = await Promise.all(emailTargets.map((email) => deliverBrief(brief, email)));
     const record: PushDeliveryRecord = {
       id: makeRecordId(brief.date, input.channel),
       issueDate: brief.date,
@@ -219,7 +255,7 @@ export async function sendPushDelivery(input: {
       status: results.some((result) => result.mode === "sent") ? "sent" : "skipped",
       createdAt,
       detail: {
-        targets: targetEmails,
+        targets: emailTargets,
         results: results.map((result) =>
           result.mode === "sent" ? { mode: result.mode, providerId: result.id } : result,
         ),
