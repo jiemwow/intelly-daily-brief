@@ -16,7 +16,7 @@ type PushDeliveryRecord = {
   id: string;
   issueDate: string;
   channel: PushChannel;
-  status: "sent" | "prepared" | "skipped";
+  status: "sent" | "prepared" | "skipped" | "failed";
   createdAt: string;
   detail: Record<string, unknown>;
 };
@@ -247,18 +247,37 @@ export async function sendPushDelivery(input: {
       return record;
     }
 
-    const results = await Promise.all(emailTargets.map((email) => deliverBrief(brief, email)));
+    const settledResults = await Promise.allSettled(emailTargets.map((email) => deliverBrief(brief, email)));
+    const results = settledResults.map((result, index) => {
+      if (result.status === "fulfilled") {
+        return {
+          target: emailTargets[index],
+          ok: true,
+          result: result.value,
+        };
+      }
+
+      const reason = result.reason as {
+        message?: string;
+        detail?: Record<string, unknown>;
+      };
+      return {
+        target: emailTargets[index],
+        ok: false,
+        error: reason?.message ?? String(result.reason),
+        detail: reason?.detail ?? null,
+      };
+    });
+    const sentCount = results.filter((result) => result.ok).length;
     const record: PushDeliveryRecord = {
       id: makeRecordId(brief.date, input.channel),
       issueDate: brief.date,
       channel: input.channel,
-      status: results.some((result) => result.mode === "sent") ? "sent" : "skipped",
+      status: sentCount > 0 ? "sent" : "failed",
       createdAt,
       detail: {
         targets: emailTargets,
-        results: results.map((result) =>
-          result.mode === "sent" ? { mode: result.mode, providerId: result.id } : result,
-        ),
+        results,
       },
     };
     await appendDeliveryLog(record);

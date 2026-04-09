@@ -51,42 +51,55 @@ export async function GET(request: Request) {
     : (["email", "wechat", "im"] satisfies PushChannel[]);
   const deliveries = await Promise.all(
     channels.map(async (channel) => {
-      const targetUsers = await resolveTargetsForRun({
-        issueDate,
-        channel,
-        manualRun,
-        now,
-      });
+      try {
+        const targetUsers = await resolveTargetsForRun({
+          issueDate,
+          channel,
+          manualRun,
+          now,
+        });
 
-      if (targetUsers.length === 0) {
+        if (targetUsers.length === 0) {
+          return {
+            channel,
+            status: "skipped",
+            targets: [],
+            reason: manualRun ? "No enabled recipients found." : "No recipients due in this dispatch window.",
+          };
+        }
+
+        if (dryRun) {
+          return {
+            channel,
+            status: "scheduled",
+            targets: targetUsers,
+          };
+        }
+
+        const delivery = await sendPushDelivery({
+          issueDate,
+          channel,
+          targetUsers,
+        });
+
         return {
           channel,
-          status: "skipped",
-          targets: [],
-          reason: manualRun ? "No enabled recipients found." : "No recipients due in this dispatch window.",
-        };
-      }
-
-      if (dryRun) {
-        return {
-          channel,
-          status: "scheduled",
+          status: delivery.status,
           targets: targetUsers,
+          delivery,
+        };
+      } catch (error) {
+        const detail =
+          error instanceof Error && "detail" in error ? (error as { detail?: unknown }).detail : null;
+
+        return {
+          channel,
+          status: "failed",
+          targets: [],
+          error: error instanceof Error ? error.message : "Delivery failed",
+          detail,
         };
       }
-
-      const delivery = await sendPushDelivery({
-        issueDate,
-        channel,
-        targetUsers,
-      });
-
-      return {
-        channel,
-        status: delivery.status,
-        targets: targetUsers,
-        delivery,
-      };
     }),
   );
 

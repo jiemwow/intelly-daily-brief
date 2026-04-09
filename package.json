@@ -9,7 +9,8 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "brief:run": "node --import tsx src/jobs/run-daily-brief.ts",
-    "brief:inspect": "node --import tsx src/jobs/inspect-candidates.ts"
+    "brief:inspect": "node --import tsx src/jobs/inspect-candidates.ts",
+    "brief:mail-app": "node --import tsx src/jobs/send-daily-brief-mail-app.ts"
   },
   "dependencies": {
     "@types/nodemailer": "^7.0.11",

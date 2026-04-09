@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.jiem.intelly-daily-brief-mail-runner</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/bin/bash</string>
+      <string>-lc</string>
+      <string>osascript -e 'tell application "Terminal" to do script "cd /Users/jiem/Documents/intelly-daily-brief &amp;&amp; MAIL_APP_RECIPIENT_EMAIL=jiem.yangjie@huawei.com BRIEF_RECIPIENT_EMAIL=jiem.yangjie@huawei.com BRIEF_TIMEZONE=Asia/Shanghai /Users/jiem/.nvm/versions/node/v22.22.0/bin/npm run brief:mail-app; exit"'</string>
+    </array>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>StartCalendarInterval</key>
+    <dict>
+      <key>Hour</key>
+      <integer>7</integer>
+      <key>Minute</key>
+      <integer>45</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/Users/jiem/Library/Logs/intelly-daily-brief-mail-runner.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/jiem/Library/Logs/intelly-daily-brief-mail-runner.log</string>
+    <key>WorkingDirectory</key>
+    <string>/Users/jiem/Documents/intelly-daily-brief</string>
+  </dict>
+</plist>

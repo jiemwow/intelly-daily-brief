@@ -22,14 +22,26 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "channel is required" }, { status: 400 });
   }
 
-  const delivery = await sendPushDelivery({
-    issueDate: payload?.issueDate,
-    channel,
-    targetUsers: payload?.targetUsers,
-  });
+  try {
+    const delivery = await sendPushDelivery({
+      issueDate: payload?.issueDate,
+      channel,
+      targetUsers: payload?.targetUsers,
+    });
 
-  return NextResponse.json({
-    ok: true,
-    delivery,
-  });
+    return NextResponse.json({
+      ok: true,
+      delivery,
+    });
+  } catch (error) {
+    const detail = error instanceof Error && "detail" in error ? (error as { detail?: unknown }).detail : null;
+    return NextResponse.json(
+      {
+        ok: false,
+        error: error instanceof Error ? error.message : "Push delivery failed",
+        detail,
+      },
+      { status: 502 },
+    );
+  }
 }
